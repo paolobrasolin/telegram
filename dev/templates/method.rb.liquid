@@ -1,26 +1,28 @@
 module Telegram
-  module Bot
-    module Methods
+  module API
+    module Bot
+      module Methods
 {%- for line in method.description %}
-      # {{ line }}
-      #
+        # {{ line }}
+        #
 {%- endfor %}
 {%- if method.parameters == empty %}
-      def self.{{ method.name }}
-      end
+        def self.{{ method.name }}
+        end
 {% else %}
 {%- for parameter in method.parameters %}
-      # @param {{parameter.name}} [{{parameter.type}}] {{ parameter.description }}
+        # @param {{parameter.name}} [{{parameter.type}}] {{ parameter.description }}
 {%- endfor %}
-      def self.{{ method.name }}(
+        def self.{{ method.name }}(
 {%- for parameter in method.parameters %}
-        {{ parameter.name }}:
-          {%- unless parameter.required %} nil{% endunless -%}
-          {%- unless parameter == method.parameters.last %},{% endunless %}
+          {{ parameter.name }}:
+            {%- unless parameter.required %} nil{% endunless -%}
+            {%- unless parameter == method.parameters.last %},{% endunless %}
 {%- endfor %}
-      )
-      end
+        )
+        end
 {%- endif %}
+      end
     end
   end
 end

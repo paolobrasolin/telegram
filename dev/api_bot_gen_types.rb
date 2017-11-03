@@ -187,7 +187,7 @@ sections.each do |section|
 end
 
 
-$types_dir = File.join __dir__, '..', *%w[gen telegram bot types]
+$types_dir = File.join __dir__, '..', *%w[gen telegram api bot types]
 FileUtils.mkdir_p $types_dir
 $type_template = Liquid::Template.parse File.read(File.join __dir__, 'templates', 'type.rb.liquid')
 
@@ -215,7 +215,7 @@ end
 # end
 
 
-$methods_dir = File.join __dir__, '..', *%w[gen telegram bot methods]
+$methods_dir = File.join __dir__, '..', *%w[gen telegram api bot methods]
 FileUtils.mkdir_p $methods_dir
 $method_template = Liquid::Template.parse File.read(File.join __dir__, 'templates', 'method.rb.liquid')
 

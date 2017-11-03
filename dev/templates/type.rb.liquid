@@ -1,30 +1,32 @@
 module Telegram
-  module Bot
-    module Types
+  module API
+    module Bot
+      module Types
 {%- for line in type.description %}
-      # {{ line }}
-      #
+        # {{ line }}
+        #
 {%- endfor %}
-      class {{ type.name }}{% if type.parent %} < {{ type.parent }}{% endif %}
+        class {{ type.name }}{% if type.parent %} < {{ type.parent }}{% endif %}
 {%- unless type.fields == empty %}
 {%- for field in type.fields %}
-        # {{ field.description }}
-        #
-        # @return [{{ field.type }}]
-        attr_accessor :{{ field.name }}
+          # {{ field.description }}
+          #
+          # @return [{{ field.type }}]
+          attr_accessor :{{ field.name }}
 {% endfor %}
-        def initialize(
+          def initialize(
 {%- for field in type.fields %}
-          {{ field.name }}:
-            {%- if field.optional %} nil{% endif -%}
-            {%- unless field == type.fields.last %},{% endunless %}
+            {{ field.name }}:
+              {%- if field.optional %} nil{% endif -%}
+              {%- unless field == type.fields.last %},{% endunless %}
 {%- endfor %}
-        )
+          )
 {%- for field in type.fields %}
-          @{{ field.name }} = {{ field.name }}
+            @{{ field.name }} = {{ field.name }}
 {%- endfor %}
-        end
+          end
 {%- endunless %}
+        end
       end
     end
   end
