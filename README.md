@@ -1,5 +1,14 @@
 # Telegram
 
+[![Build Status](https://travis-ci.org/paolobrasolin/telegram.svg?branch=master)](https://travis-ci.org/paolobrasolin/telegram)
+[![Gem Version](https://badge.fury.io/rb/telegram.svg)](https://badge.fury.io/rb/telegram)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![Code Climate](https://codeclimate.com/github/paolobrasolin/telegram/badges/gpa.svg)](https://codeclimate.com/github/paolobrasolin/telegram)
+[![Test Coverage](https://codeclimate.com/github/paolobrasolin/telegram/badges/coverage.svg)](https://codeclimate.com/github/paolobrasolin/telegram/coverage)
+[![Inline docs](http://inch-ci.org/github/paolobrasolin/telegram.svg?branch=master)](http://inch-ci.org/github/paolobrasolin/telegram)
+[![Issue Count](https://codeclimate.com/github/paolobrasolin/telegram/badges/issue_count.svg)](https://codeclimate.com/github/paolobrasolin/telegram)
+
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/telegram`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem

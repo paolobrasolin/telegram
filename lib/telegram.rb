@@ -1,5 +1,4 @@
-require "telegram/version"
+require 'telegram/version'
 
-module Telegram
-  # Your code goes here...
-end
+# require 'telegram/app'
+# require 'telegram/bot'
