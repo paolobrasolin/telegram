@@ -1,4 +1,4 @@
 require 'telegram/version'
 
-# require 'telegram/app'
-# require 'telegram/bot'
+require 'telegram/app'
+require 'telegram/bot'
