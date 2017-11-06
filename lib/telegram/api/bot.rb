@@ -1,5 +1,6 @@
-require 'telegram/api/bot/types'
+require 'telegram/api/bot/client'
 require 'telegram/api/bot/methods'
+require 'telegram/api/bot/types'
 
 module Telegram
   module API

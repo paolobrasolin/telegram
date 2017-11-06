@@ -12,12 +12,15 @@ module Telegram
         # @param certificate [InputFile] Upload your public key certificate so that the root certificate in use can be checked. See our {https://core.telegram.org/bots/self-signed self-signed guide} for details.
         # @param max_connections [Integer] Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to _40_. Use lower values to limit the load on your bot‘s server, and higher values to increase your bot’s throughput.
         # @param allowed_updates [Array<String>] List the types of updates you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.<br><br>Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
-        def self.set_webhook(
+        def set_webhook(
           url:,
           certificate: nil,
           max_connections: nil,
           allowed_updates: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

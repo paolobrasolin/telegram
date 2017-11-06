@@ -10,10 +10,13 @@ module Telegram
         #
         # @param chat_id [Integer or String] Unique identifier for the target chat or username of the target channel (in the format <code>@channelusername</code>)
         # @param action [String] Type of action to broadcast. Choose one, depending on what the user is about to receive: _typing_ for text messages, _upload_photo_ for photos, _record_video_ or _upload_video_ for videos, _record_audio_ or _upload_audio_ for audio files, _upload_document_ for general files, _find_location_ for location data, _record_video_note_ or _upload_video_note_ for video notes.
-        def self.send_chat_action(
+        def send_chat_action(
           chat_id:,
           action:
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

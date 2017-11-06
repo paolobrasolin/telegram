@@ -11,7 +11,7 @@ module Telegram
         # @param emojis [String] One or more emoji corresponding to the sticker
         # @param contains_masks [Boolean] Pass _True_, if a set of mask stickers should be created
         # @param mask_position [MaskPosition] A JSON-serialized object for position where the mask should be placed on faces
-        def self.create_new_sticker_set(
+        def create_new_sticker_set(
           user_id:,
           name:,
           title:,
@@ -20,6 +20,9 @@ module Telegram
           contains_masks: nil,
           mask_position: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

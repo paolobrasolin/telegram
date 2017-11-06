@@ -9,13 +9,16 @@ module Telegram
         # @param png_sticker [InputFile or String] *Png* image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a _file_id_ as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
         # @param emojis [String] One or more emoji corresponding to the sticker
         # @param mask_position [MaskPosition] A JSON-serialized object for position where the mask should be placed on faces
-        def self.add_sticker_to_set(
+        def add_sticker_to_set(
           user_id:,
           name:,
           png_sticker:,
           emojis:,
           mask_position: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

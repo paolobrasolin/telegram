@@ -8,12 +8,15 @@ module Telegram
         # @param message_id [Integer] Required if _inline_message_id_ is not specified. Identifier of the sent message
         # @param inline_message_id [String] Required if _chat_id_ and _message_id_ are not specified. Identifier of the inline message
         # @param reply_markup [InlineKeyboardMarkup] A JSON-serialized object for an {https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating inline keyboard}.
-        def self.edit_message_reply_markup(
+        def edit_message_reply_markup(
           chat_id: nil,
           message_id: nil,
           inline_message_id: nil,
           reply_markup: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

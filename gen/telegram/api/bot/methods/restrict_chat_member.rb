@@ -11,7 +11,7 @@ module Telegram
         # @param can_send_media_messages [Boolean] Pass True, if the user can send audios, documents, photos, videos, video notes and voice notes, implies can_send_messages
         # @param can_send_other_messages [Boolean] Pass True, if the user can send animations, games, stickers and use inline bots, implies can_send_media_messages
         # @param can_add_web_page_previews [Boolean] Pass True, if the user may add web page previews to their messages, implies can_send_media_messages
-        def self.restrict_chat_member(
+        def restrict_chat_member(
           chat_id:,
           user_id:,
           until_date: nil,
@@ -20,6 +20,9 @@ module Telegram
           can_send_other_messages: nil,
           can_add_web_page_previews: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

@@ -1,3 +1,7 @@
+Gem
+  .find_files(File.join *%w{telegram api bot methods *.rb})
+  .each { |path| require path }
+
 module Telegram
   module API
     module Bot

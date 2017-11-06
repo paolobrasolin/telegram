@@ -240,3 +240,13 @@ end
 api_methods.each do |method|
   generate_method method
 end
+
+file_path = File.join __dir__, '..', *%w[gen telegram api bot gen_methods.rb]
+File.open(file_path, 'w') do |file|
+  api_methods.each do |method|
+    method_file_path = File.join *%w[telegram api bot methods], method[:name].underscore
+    file.write <<~REQUIRE_DIRECTIVE
+      require '#{method_file_path}'
+    REQUIRE_DIRECTIVE
+  end
+end

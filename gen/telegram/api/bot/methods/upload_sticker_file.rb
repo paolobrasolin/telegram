@@ -6,10 +6,13 @@ module Telegram
         #
         # @param user_id [Integer] User identifier of sticker file owner
         # @param png_sticker [InputFile] *Png* image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »
-        def self.upload_sticker_file(
+        def upload_sticker_file(
           user_id:,
           png_sticker:
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

@@ -11,7 +11,7 @@ module Telegram
         # @param parse_mode [String] Send _Markdown_ or _HTML_, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
         # @param disable_web_page_preview [Boolean] Disables link previews for links in this message
         # @param reply_markup [InlineKeyboardMarkup] A JSON-serialized object for an {https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating inline keyboard}.
-        def self.edit_message_text(
+        def edit_message_text(
           chat_id: nil,
           message_id: nil,
           inline_message_id: nil,
@@ -20,6 +20,9 @@ module Telegram
           disable_web_page_preview: nil,
           reply_markup: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

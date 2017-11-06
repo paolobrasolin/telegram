@@ -11,13 +11,16 @@ module Telegram
         # @param show_alert [Boolean] If _true_, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to _false_.
         # @param url [String] URL that will be opened by the user's client. If you have created a Game and accepted the conditions via {https://t.me/botfather @Botfather}, specify the URL that opens your game – note that this will only work if the query comes from a _callback_game_ button.<br><br>Otherwise, you may use links like <code>t.me/your_bot?start=XXXX</code> that open your bot with a parameter.
         # @param cache_time [Integer] The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
-        def self.answer_callback_query(
+        def answer_callback_query(
           callback_query_id:,
           text: nil,
           show_alert: nil,
           url: nil,
           cache_time: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

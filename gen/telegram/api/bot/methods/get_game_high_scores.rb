@@ -10,12 +10,15 @@ module Telegram
         # @param chat_id [Integer] Required if _inline_message_id_ is not specified. Unique identifier for the target chat
         # @param message_id [Integer] Required if _inline_message_id_ is not specified. Identifier of the sent message
         # @param inline_message_id [String] Required if _chat_id_ and _message_id_ are not specified. Identifier of the inline message
-        def self.get_game_high_scores(
+        def get_game_high_scores(
           user_id:,
           chat_id: nil,
           message_id: nil,
           inline_message_id: nil
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end

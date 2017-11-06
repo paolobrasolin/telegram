@@ -6,10 +6,13 @@ module Telegram
         #
         # @param chat_id [Integer or String] Unique identifier for the target chat or username of the target supergroup (in the format <code>@supergroupusername</code>)
         # @param sticker_set_name [String] Name of the sticker set to be set as the group sticker set
-        def self.set_chat_sticker_set(
+        def set_chat_sticker_set(
           chat_id:,
           sticker_set_name:
         )
+          url = build_url method_name: __method__.to_s.delete('_')
+          parameters = method_parameters_hash __method__, binding
+          Telegram::API::Bot::Client.post url: url, parameters: parameters
         end
       end
     end
