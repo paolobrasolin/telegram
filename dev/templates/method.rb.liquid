@@ -7,7 +7,9 @@ module Telegram
         #
 {%- endfor %}
 {%- if method.parameters == empty %}
-        def self.{{ method.name }}
+        def {{ method.name }}
+          url = build_url method_name: __method__.to_s.delete('_')
+          Telegram::API::Bot::Client.post url: url, parameters: {}
         end
 {% else %}
 {%- for parameter in method.parameters %}

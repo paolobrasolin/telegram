@@ -155,19 +155,23 @@ api_methods = []
 
 sections.each do |section|
   name = section[:title]
+  # We skip fake-ish base type classes.
+  next if name =~ /^InputMessageContent$/
+  next if name =~ /^InlineQueryResult$/
+
   has_table = !section[:html][:table].nil?
   if name =~ /^[A-Z][a-zA-Z0-9]+$/
     puts "T #{has_table ? OK : KO} #{name.green}"
 
-    parent = nil
-    parent = 'InputMessageContent' if name =~ /^Input[a-zA-Z0-9]+MessageContent$/
-    parent = 'InlineQueryResult' if name =~ /^InlineQueryResult[a-zA-Z0-9]+$/
+    # parent = nil
+    # parent = 'InputMessageContent' if name =~ /^Input[a-zA-Z0-9]+MessageContent$/
+    # parent = 'InlineQueryResult' if name =~ /^InlineQueryResult[a-zA-Z0-9]+$/
 
     attributes = has_table ? parse_type_table(section[:html][:table]) : []
 
     api_types << {
       name: name,
-      parent: parent,
+      # parent: parent,
       attributes: attributes,
       description: section[:html][:contents].map { |t| parse_description t }
     }
@@ -194,12 +198,13 @@ $type_template = Liquid::Template.parse File.read(File.join __dir__, 'templates'
 def generate_type(type)
   serialized = {
     'name' => type[:name],
-    'parent' => type[:parent],
+    # 'parent' => type[:parent],
     'fields' => type[:attributes],
     'description' => type[:description]
   }
 
-  file_dir = File.join(*[$types_dir, type[:parent]&.underscore].compact)
+  # file_dir = File.join(*[$types_dir, type[:parent]&.underscore].compact)
+  file_dir = $types_dir
   FileUtils.mkdir_p file_dir
   file_name = serialized['name'].underscore + '.rb'
   file_path = File.join file_dir, file_name
@@ -210,9 +215,9 @@ def generate_type(type)
   end
 end
 
-# api_types.each do |type|
-#   generate_type type
-# end
+api_types.each do |type|
+  generate_type type
+end
 
 
 $methods_dir = File.join __dir__, '..', *%w[gen telegram api bot methods]
@@ -226,7 +231,8 @@ def generate_method(method)
     'description' => method[:description]
   }
 
-  file_dir = File.join(*[$methods_dir, method[:parent]&.underscore].compact)
+  # file_dir = File.join(*[$methods_dir, method[:parent]&.underscore].compact)
+  file_dir = $methods_dir
   FileUtils.mkdir_p file_dir
   file_name = serialized['name'].underscore + '.rb'
   file_path = File.join file_dir, file_name
@@ -241,12 +247,12 @@ api_methods.each do |method|
   generate_method method
 end
 
-file_path = File.join __dir__, '..', *%w[gen telegram api bot gen_methods.rb]
-File.open(file_path, 'w') do |file|
-  api_methods.each do |method|
-    method_file_path = File.join *%w[telegram api bot methods], method[:name].underscore
-    file.write <<~REQUIRE_DIRECTIVE
-      require '#{method_file_path}'
-    REQUIRE_DIRECTIVE
-  end
-end
+# file_path = File.join __dir__, '..', *%w[gen telegram api bot gen_methods.rb]
+# File.open(file_path, 'w') do |file|
+#   api_methods.each do |method|
+#     method_file_path = File.join *%w[telegram api bot methods], method[:name].underscore
+#     file.write <<~REQUIRE_DIRECTIVE
+#       require '#{method_file_path}'
+#     REQUIRE_DIRECTIVE
+#   end
+# end
