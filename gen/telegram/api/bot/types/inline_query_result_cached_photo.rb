@@ -21,7 +21,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the photo
         InlineQueryResultCachedPhoto = Struct.new(:type, :id, :photo_file_id, :title, :description, :caption, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, photo_file_id:, title:, description:, caption:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, photo_file_id:, title: nil, description: nil, caption: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, photo_file_id, title, description, caption, reply_markup, input_message_content)
           end
         end

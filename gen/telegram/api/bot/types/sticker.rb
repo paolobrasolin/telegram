@@ -21,7 +21,7 @@ module Telegram
         # @!attribute [rw] file_size
         #   @return [Integer] _Optional_. File size
         Sticker = Struct.new(:file_id, :width, :height, :thumb, :emoji, :set_name, :mask_position, :file_size) do
-          def initialize(file_id:, width:, height:, thumb:, emoji:, set_name:, mask_position:, file_size:)
+          def initialize(file_id:, width:, height:, thumb: nil, emoji: nil, set_name: nil, mask_position: nil, file_size: nil)
             super(file_id, width, height, thumb, emoji, set_name, mask_position, file_size)
           end
         end

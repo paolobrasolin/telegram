@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] allowed_updates
         #   @return [Array<String>] _Optional_. A list of update types the bot is subscribed to. Defaults to all update types
         WebhookInfo = Struct.new(:url, :has_custom_certificate, :pending_update_count, :last_error_date, :last_error_message, :max_connections, :allowed_updates) do
-          def initialize(url:, has_custom_certificate:, pending_update_count:, last_error_date:, last_error_message:, max_connections:, allowed_updates:)
+          def initialize(url:, has_custom_certificate:, pending_update_count:, last_error_date: nil, last_error_message: nil, max_connections: nil, allowed_updates: nil)
             super(url, has_custom_certificate, pending_update_count, last_error_date, last_error_message, max_connections, allowed_updates)
           end
         end

@@ -21,7 +21,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the voice message
         InlineQueryResultCachedVoice = Struct.new(:type, :id, :voice_file_id, :title, :caption, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, voice_file_id:, title:, caption:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, voice_file_id:, title:, caption: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, voice_file_id, title, caption, reply_markup, input_message_content)
           end
         end

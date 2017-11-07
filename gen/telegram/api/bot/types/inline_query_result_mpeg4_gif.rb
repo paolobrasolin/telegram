@@ -27,7 +27,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the video animation
         InlineQueryResultMpeg4Gif = Struct.new(:type, :id, :mpeg4_url, :mpeg4_width, :mpeg4_height, :mpeg4_duration, :thumb_url, :title, :caption, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, mpeg4_url:, mpeg4_width:, mpeg4_height:, mpeg4_duration:, thumb_url:, title:, caption:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, mpeg4_url:, mpeg4_width: nil, mpeg4_height: nil, mpeg4_duration: nil, thumb_url:, title: nil, caption: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, mpeg4_url, mpeg4_width, mpeg4_height, mpeg4_duration, thumb_url, title, caption, reply_markup, input_message_content)
           end
         end

@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] file_size
         #   @return [Integer] _Optional_. File size
         Voice = Struct.new(:file_id, :duration, :mime_type, :file_size) do
-          def initialize(file_id:, duration:, mime_type:, file_size:)
+          def initialize(file_id:, duration:, mime_type: nil, file_size: nil)
             super(file_id, duration, mime_type, file_size)
           end
         end

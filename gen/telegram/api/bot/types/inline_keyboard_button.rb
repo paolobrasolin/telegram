@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] pay
         #   @return [Boolean] _Optional_. Specify True, to send a Pay button.<br><br>*NOTE:* This type of button *must* always be the first button in the first row.
         InlineKeyboardButton = Struct.new(:text, :url, :callback_data, :switch_inline_query, :switch_inline_query_current_chat, :callback_game, :pay) do
-          def initialize(text:, url:, callback_data:, switch_inline_query:, switch_inline_query_current_chat:, callback_game:, pay:)
+          def initialize(text:, url: nil, callback_data: nil, switch_inline_query: nil, switch_inline_query_current_chat: nil, callback_game: nil, pay: nil)
             super(text, url, callback_data, switch_inline_query, switch_inline_query_current_chat, callback_game, pay)
           end
         end

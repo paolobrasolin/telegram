@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the GIF animation
         InlineQueryResultCachedGif = Struct.new(:type, :id, :gif_file_id, :title, :caption, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, gif_file_id:, title:, caption:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, gif_file_id:, title: nil, caption: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, gif_file_id, title, caption, reply_markup, input_message_content)
           end
         end

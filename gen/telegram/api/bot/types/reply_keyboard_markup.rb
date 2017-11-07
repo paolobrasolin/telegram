@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] selective
         #   @return [Boolean] _Optional_. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the _text_ of the Message object; 2) if the bot's message is a reply (has _reply_to_message_id_), sender of the original message.<br><br>_Example:_ A user requests to change the bot‘s language, bot replies to the request with a keyboard to select the new language. Other users in the group don’t see the keyboard.
         ReplyKeyboardMarkup = Struct.new(:keyboard, :resize_keyboard, :one_time_keyboard, :selective) do
-          def initialize(keyboard:, resize_keyboard:, one_time_keyboard:, selective:)
+          def initialize(keyboard:, resize_keyboard: nil, one_time_keyboard: nil, selective: nil)
             super(keyboard, resize_keyboard, one_time_keyboard, selective)
           end
         end

@@ -37,7 +37,7 @@ module Telegram
         # @!attribute [rw] can_add_web_page_previews
         #   @return [Boolean] _Optional_. Restricted only. True, if user may add web page previews to his messages, implies can_send_media_messages
         ChatMember = Struct.new(:user, :status, :until_date, :can_be_edited, :can_change_info, :can_post_messages, :can_edit_messages, :can_delete_messages, :can_invite_users, :can_restrict_members, :can_pin_messages, :can_promote_members, :can_send_messages, :can_send_media_messages, :can_send_other_messages, :can_add_web_page_previews) do
-          def initialize(user:, status:, until_date:, can_be_edited:, can_change_info:, can_post_messages:, can_edit_messages:, can_delete_messages:, can_invite_users:, can_restrict_members:, can_pin_messages:, can_promote_members:, can_send_messages:, can_send_media_messages:, can_send_other_messages:, can_add_web_page_previews:)
+          def initialize(user:, status:, until_date: nil, can_be_edited: nil, can_change_info: nil, can_post_messages: nil, can_edit_messages: nil, can_delete_messages: nil, can_invite_users: nil, can_restrict_members: nil, can_pin_messages: nil, can_promote_members: nil, can_send_messages: nil, can_send_media_messages: nil, can_send_other_messages: nil, can_add_web_page_previews: nil)
             super(user, status, until_date, can_be_edited, can_change_info, can_post_messages, can_edit_messages, can_delete_messages, can_invite_users, can_restrict_members, can_pin_messages, can_promote_members, can_send_messages, can_send_media_messages, can_send_other_messages, can_add_web_page_previews)
           end
         end

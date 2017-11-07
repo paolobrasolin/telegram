@@ -11,7 +11,7 @@ module Telegram
         # @!attribute [rw] disable_web_page_preview
         #   @return [Boolean] _Optional_. Disables link previews for links in the sent message
         InputTextMessageContent = Struct.new(:message_text, :parse_mode, :disable_web_page_preview) do
-          def initialize(message_text:, parse_mode:, disable_web_page_preview:)
+          def initialize(message_text:, parse_mode: nil, disable_web_page_preview: nil)
             super(message_text, parse_mode, disable_web_page_preview)
           end
         end

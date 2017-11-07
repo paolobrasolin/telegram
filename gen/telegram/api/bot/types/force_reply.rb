@@ -15,7 +15,7 @@ module Telegram
         # @!attribute [rw] selective
         #   @return [Boolean] _Optional_. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the _text_ of the Message object; 2) if the bot's message is a reply (has _reply_to_message_id_), sender of the original message.
         ForceReply = Struct.new(:force_reply, :selective) do
-          def initialize(force_reply:, selective:)
+          def initialize(force_reply:, selective: nil)
             super(force_reply, selective)
           end
         end

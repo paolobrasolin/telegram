@@ -15,7 +15,7 @@ module Telegram
         # @!attribute [rw] offset
         #   @return [String] Offset of the results to be returned, can be controlled by the bot
         InlineQuery = Struct.new(:id, :from, :location, :query, :offset) do
-          def initialize(id:, from:, location:, query:, offset:)
+          def initialize(id:, from:, location: nil, query:, offset:)
             super(id, from, location, query, offset)
           end
         end

@@ -33,7 +33,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the video. This field is *required* if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
         InlineQueryResultVideo = Struct.new(:type, :id, :video_url, :mime_type, :thumb_url, :title, :caption, :video_width, :video_height, :video_duration, :description, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, video_url:, mime_type:, thumb_url:, title:, caption:, video_width:, video_height:, video_duration:, description:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, video_url:, mime_type:, thumb_url:, title:, caption: nil, video_width: nil, video_height: nil, video_duration: nil, description: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, video_url, mime_type, thumb_url, title, caption, video_width, video_height, video_duration, description, reply_markup, input_message_content)
           end
         end

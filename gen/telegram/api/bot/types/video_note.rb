@@ -15,7 +15,7 @@ module Telegram
         # @!attribute [rw] file_size
         #   @return [Integer] _Optional_. File size
         VideoNote = Struct.new(:file_id, :length, :duration, :thumb, :file_size) do
-          def initialize(file_id:, length:, duration:, thumb:, file_size:)
+          def initialize(file_id:, length:, duration:, thumb: nil, file_size: nil)
             super(file_id, length, duration, thumb, file_size)
           end
         end

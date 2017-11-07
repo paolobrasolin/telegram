@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] provider_payment_charge_id
         #   @return [String] Provider payment identifier
         SuccessfulPayment = Struct.new(:currency, :total_amount, :invoice_payload, :shipping_option_id, :order_info, :telegram_payment_charge_id, :provider_payment_charge_id) do
-          def initialize(currency:, total_amount:, invoice_payload:, shipping_option_id:, order_info:, telegram_payment_charge_id:, provider_payment_charge_id:)
+          def initialize(currency:, total_amount:, invoice_payload:, shipping_option_id: nil, order_info: nil, telegram_payment_charge_id:, provider_payment_charge_id:)
             super(currency, total_amount, invoice_payload, shipping_option_id, order_info, telegram_payment_charge_id, provider_payment_charge_id)
           end
         end

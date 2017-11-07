@@ -17,7 +17,7 @@ module Telegram
         # @!attribute [rw] animation
         #   @return [Animation] _Optional_. Animation that will be displayed in the game message in chats. Upload via {https://t.me/botfather BotFather}
         Game = Struct.new(:title, :description, :photo, :text, :text_entities, :animation) do
-          def initialize(title:, description:, photo:, text:, text_entities:, animation:)
+          def initialize(title:, description:, photo:, text: nil, text_entities: nil, animation: nil)
             super(title, description, photo, text, text_entities, animation)
           end
         end

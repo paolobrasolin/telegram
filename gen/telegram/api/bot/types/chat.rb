@@ -31,7 +31,7 @@ module Telegram
         # @!attribute [rw] can_set_sticker_set
         #   @return [Boolean] _Optional_. True, if the bot can change the group sticker set. Returned only in getChat.
         Chat = Struct.new(:id, :type, :title, :username, :first_name, :last_name, :all_members_are_administrators, :photo, :description, :invite_link, :pinned_message, :sticker_set_name, :can_set_sticker_set) do
-          def initialize(id:, type:, title:, username:, first_name:, last_name:, all_members_are_administrators:, photo:, description:, invite_link:, pinned_message:, sticker_set_name:, can_set_sticker_set:)
+          def initialize(id:, type:, title: nil, username: nil, first_name: nil, last_name: nil, all_members_are_administrators: nil, photo: nil, description: nil, invite_link: nil, pinned_message: nil, sticker_set_name: nil, can_set_sticker_set: nil)
             super(id, type, title, username, first_name, last_name, all_members_are_administrators, photo, description, invite_link, pinned_message, sticker_set_name, can_set_sticker_set)
           end
         end

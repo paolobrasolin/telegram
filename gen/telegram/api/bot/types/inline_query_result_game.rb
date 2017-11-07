@@ -15,7 +15,7 @@ module Telegram
         # @!attribute [rw] reply_markup
         #   @return [InlineKeyboardMarkup] _Optional_. {https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating Inline keyboard} attached to the message
         InlineQueryResultGame = Struct.new(:type, :id, :game_short_name, :reply_markup) do
-          def initialize(type:, id:, game_short_name:, reply_markup:)
+          def initialize(type:, id:, game_short_name:, reply_markup: nil)
             super(type, id, game_short_name, reply_markup)
           end
         end

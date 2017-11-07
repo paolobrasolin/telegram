@@ -31,7 +31,7 @@ module Telegram
         # @!attribute [rw] thumb_height
         #   @return [Integer] _Optional_. Thumbnail height
         InlineQueryResultDocument = Struct.new(:type, :id, :title, :caption, :document_url, :mime_type, :description, :reply_markup, :input_message_content, :thumb_url, :thumb_width, :thumb_height) do
-          def initialize(type:, id:, title:, caption:, document_url:, mime_type:, description:, reply_markup:, input_message_content:, thumb_url:, thumb_width:, thumb_height:)
+          def initialize(type:, id:, title:, caption: nil, document_url:, mime_type:, description: nil, reply_markup: nil, input_message_content: nil, thumb_url: nil, thumb_width: nil, thumb_height: nil)
             super(type, id, title, caption, document_url, mime_type, description, reply_markup, input_message_content, thumb_url, thumb_width, thumb_height)
           end
         end

@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] foursquare_id
         #   @return [String] _Optional_. Foursquare identifier of the venue
         Venue = Struct.new(:location, :title, :address, :foursquare_id) do
-          def initialize(location:, title:, address:, foursquare_id:)
+          def initialize(location:, title:, address:, foursquare_id: nil)
             super(location, title, address, foursquare_id)
           end
         end

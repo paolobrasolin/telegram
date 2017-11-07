@@ -21,7 +21,7 @@ module Telegram
         # @!attribute [rw] game_short_name
         #   @return [String] _Optional_. Short name of a Game to be returned, serves as the unique identifier for the game
         CallbackQuery = Struct.new(:id, :from, :message, :inline_message_id, :chat_instance, :data, :game_short_name) do
-          def initialize(id:, from:, message:, inline_message_id:, chat_instance:, data:, game_short_name:)
+          def initialize(id:, from:, message: nil, inline_message_id: nil, chat_instance:, data: nil, game_short_name: nil)
             super(id, from, message, inline_message_id, chat_instance, data, game_short_name)
           end
         end

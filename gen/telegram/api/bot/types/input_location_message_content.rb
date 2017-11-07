@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] live_period
         #   @return [Integer] _Optional_. Period in seconds for which the location can be updated, should be between 60 and 86400.
         InputLocationMessageContent = Struct.new(:latitude, :longitude, :live_period) do
-          def initialize(latitude:, longitude:, live_period:)
+          def initialize(latitude:, longitude:, live_period: nil)
             super(latitude, longitude, live_period)
           end
         end

@@ -17,7 +17,7 @@ module Telegram
         # @!attribute [rw] language_code
         #   @return [String] _Optional_. {https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag} of the user's language
         User = Struct.new(:id, :is_bot, :first_name, :last_name, :username, :language_code) do
-          def initialize(id:, is_bot:, first_name:, last_name:, username:, language_code:)
+          def initialize(id:, is_bot:, first_name:, last_name: nil, username: nil, language_code: nil)
             super(id, is_bot, first_name, last_name, username, language_code)
           end
         end

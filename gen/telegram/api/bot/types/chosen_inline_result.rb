@@ -17,7 +17,7 @@ module Telegram
         # @!attribute [rw] query
         #   @return [String] The query that was used to obtain the result
         ChosenInlineResult = Struct.new(:result_id, :from, :location, :inline_message_id, :query) do
-          def initialize(result_id:, from:, location:, inline_message_id:, query:)
+          def initialize(result_id:, from:, location: nil, inline_message_id: nil, query:)
             super(result_id, from, location, inline_message_id, query)
           end
         end

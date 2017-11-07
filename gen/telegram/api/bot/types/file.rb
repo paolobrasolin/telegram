@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] file_path
         #   @return [String] _Optional_. File path. Use <code>https://api.telegram.org/file/bot&lt;token&gt;/&lt;file_path&gt;</code> to get the file.
         File = Struct.new(:file_id, :file_size, :file_path) do
-          def initialize(file_id:, file_size:, file_path:)
+          def initialize(file_id:, file_size: nil, file_path: nil)
             super(file_id, file_size, file_path)
           end
         end

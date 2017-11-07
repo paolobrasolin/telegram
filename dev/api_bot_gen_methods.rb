@@ -114,14 +114,15 @@ def parse_type_table(table)
   attributes = []
   data_cells.each_slice(3) do |field_cell, type_cell, description_cell|
     # puts description_cell
-    keys = %w[name type description optional]
+    keys = %w[name type optional description]
     values = [
       field_cell.content,
       human_type_to_yard_signature(type_cell.content),
-      parse_description(description_cell),
-      !!(description_cell.content =~ /^Optional./)
+      !!(description_cell.content =~ /^Optional./),
+      parse_description(description_cell) # NOTE: destructive, must be last
     ]
     attributes << keys.zip(values).to_h
+    # puts attributes
   end
   attributes
 end
@@ -156,8 +157,7 @@ api_methods = []
 sections.each do |section|
   name = section[:title]
   # We skip fake-ish base type classes.
-  next if name =~ /^InputMessageContent$/
-  next if name =~ /^InlineQueryResult$/
+  next if %w[InputMessageContent InlineQueryResult CallbackGame InputFile].include? name
 
   has_table = !section[:html][:table].nil?
   if name =~ /^[A-Z][a-zA-Z0-9]+$/

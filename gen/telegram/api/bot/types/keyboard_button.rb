@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] request_location
         #   @return [Boolean] _Optional_. If _True_, the user's current location will be sent when the button is pressed. Available in private chats only
         KeyboardButton = Struct.new(:text, :request_contact, :request_location) do
-          def initialize(text:, request_contact:, request_location:)
+          def initialize(text:, request_contact: nil, request_location: nil)
             super(text, request_contact, request_location)
           end
         end

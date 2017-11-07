@@ -9,7 +9,7 @@ module Telegram
         # @!attribute [rw] retry_after
         #   @return [Integer] _Optional_. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
         ResponseParameters = Struct.new(:migrate_to_chat_id, :retry_after) do
-          def initialize(migrate_to_chat_id:, retry_after:)
+          def initialize(migrate_to_chat_id: nil, retry_after: nil)
             super(migrate_to_chat_id, retry_after)
           end
         end

@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] last_name
         #   @return [String] _Optional_. Contact's last name
         InputContactMessageContent = Struct.new(:phone_number, :first_name, :last_name) do
-          def initialize(phone_number:, first_name:, last_name:)
+          def initialize(phone_number:, first_name:, last_name: nil)
             super(phone_number, first_name, last_name)
           end
         end

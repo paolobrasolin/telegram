@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] file_size
         #   @return [Integer] _Optional_. File size
         Video = Struct.new(:file_id, :width, :height, :duration, :thumb, :mime_type, :file_size) do
-          def initialize(file_id:, width:, height:, duration:, thumb:, mime_type:, file_size:)
+          def initialize(file_id:, width:, height:, duration:, thumb: nil, mime_type: nil, file_size: nil)
             super(file_id, width, height, duration, thumb, mime_type, file_size)
           end
         end

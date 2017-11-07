@@ -19,7 +19,7 @@ module Telegram
         # @!attribute [rw] order_info
         #   @return [OrderInfo] _Optional_. Order info provided by the user
         PreCheckoutQuery = Struct.new(:id, :from, :currency, :total_amount, :invoice_payload, :shipping_option_id, :order_info) do
-          def initialize(id:, from:, currency:, total_amount:, invoice_payload:, shipping_option_id:, order_info:)
+          def initialize(id:, from:, currency:, total_amount:, invoice_payload:, shipping_option_id: nil, order_info: nil)
             super(id, from, currency, total_amount, invoice_payload, shipping_option_id, order_info)
           end
         end

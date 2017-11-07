@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] file_size
         #   @return [Integer] _Optional_. File size
         PhotoSize = Struct.new(:file_id, :width, :height, :file_size) do
-          def initialize(file_id:, width:, height:, file_size:)
+          def initialize(file_id:, width:, height:, file_size: nil)
             super(file_id, width, height, file_size)
           end
         end

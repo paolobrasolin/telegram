@@ -17,7 +17,7 @@ module Telegram
         # @!attribute [rw] foursquare_id
         #   @return [String] _Optional_. Foursquare identifier of the venue, if known
         InputVenueMessageContent = Struct.new(:latitude, :longitude, :title, :address, :foursquare_id) do
-          def initialize(latitude:, longitude:, title:, address:, foursquare_id:)
+          def initialize(latitude:, longitude:, title:, address:, foursquare_id: nil)
             super(latitude, longitude, title, address, foursquare_id)
           end
         end

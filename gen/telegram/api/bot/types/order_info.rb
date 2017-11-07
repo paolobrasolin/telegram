@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] shipping_address
         #   @return [ShippingAddress] _Optional_. User shipping address
         OrderInfo = Struct.new(:name, :phone_number, :email, :shipping_address) do
-          def initialize(name:, phone_number:, email:, shipping_address:)
+          def initialize(name: nil, phone_number: nil, email: nil, shipping_address: nil)
             super(name, phone_number, email, shipping_address)
           end
         end

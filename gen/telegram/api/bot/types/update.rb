@@ -25,7 +25,7 @@ module Telegram
         # @!attribute [rw] pre_checkout_query
         #   @return [PreCheckoutQuery] _Optional_. New incoming pre-checkout query. Contains full information about checkout
         Update = Struct.new(:update_id, :message, :edited_message, :channel_post, :edited_channel_post, :inline_query, :chosen_inline_result, :callback_query, :shipping_query, :pre_checkout_query) do
-          def initialize(update_id:, message:, edited_message:, channel_post:, edited_channel_post:, inline_query:, chosen_inline_result:, callback_query:, shipping_query:, pre_checkout_query:)
+          def initialize(update_id:, message: nil, edited_message: nil, channel_post: nil, edited_channel_post: nil, inline_query: nil, chosen_inline_result: nil, callback_query: nil, shipping_query: nil, pre_checkout_query: nil)
             super(update_id, message, edited_message, channel_post, edited_channel_post, inline_query, chosen_inline_result, callback_query, shipping_query, pre_checkout_query)
           end
         end

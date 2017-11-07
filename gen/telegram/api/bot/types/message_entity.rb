@@ -15,7 +15,7 @@ module Telegram
         # @!attribute [rw] user
         #   @return [User] _Optional_. For “text_mention” only, the mentioned user
         MessageEntity = Struct.new(:type, :offset, :length, :url, :user) do
-          def initialize(type:, offset:, length:, url:, user:)
+          def initialize(type:, offset:, length:, url: nil, user: nil)
             super(type, offset, length, url, user)
           end
         end

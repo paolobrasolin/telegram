@@ -17,7 +17,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the sticker
         InlineQueryResultCachedSticker = Struct.new(:type, :id, :sticker_file_id, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, sticker_file_id:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, sticker_file_id:, reply_markup: nil, input_message_content: nil)
             super(type, id, sticker_file_id, reply_markup, input_message_content)
           end
         end

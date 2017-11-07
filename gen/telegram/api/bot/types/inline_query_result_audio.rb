@@ -25,7 +25,7 @@ module Telegram
         # @!attribute [rw] input_message_content
         #   @return [InputMessageContent] _Optional_. Content of the message to be sent instead of the audio
         InlineQueryResultAudio = Struct.new(:type, :id, :audio_url, :title, :caption, :performer, :audio_duration, :reply_markup, :input_message_content) do
-          def initialize(type:, id:, audio_url:, title:, caption:, performer:, audio_duration:, reply_markup:, input_message_content:)
+          def initialize(type:, id:, audio_url:, title:, caption: nil, performer: nil, audio_duration: nil, reply_markup: nil, input_message_content: nil)
             super(type, id, audio_url, title, caption, performer, audio_duration, reply_markup, input_message_content)
           end
         end

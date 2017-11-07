@@ -13,7 +13,7 @@ module Telegram
         # @!attribute [rw] user_id
         #   @return [Integer] _Optional_. Contact's user identifier in Telegram
         Contact = Struct.new(:phone_number, :first_name, :last_name, :user_id) do
-          def initialize(phone_number:, first_name:, last_name:, user_id:)
+          def initialize(phone_number:, first_name:, last_name: nil, user_id: nil)
             super(phone_number, first_name, last_name, user_id)
           end
         end
