@@ -1,1 +1,6 @@
-gen/**/*.rb lib/**/*.rb
+gen/**/*.rb
+lib/**/*.rb
+-
+README.md
+LICENSE.txt
+CODE_OF_CONDUCT.md
