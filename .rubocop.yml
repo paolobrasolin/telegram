@@ -1,5 +1,11 @@
 AllCops:
   TargetRubyVersion: 2.3
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
 Metrics/MethodLength:
   Exclude:
     - 'gen/**/*'
@@ -33,11 +39,7 @@ Metrics/ModuleLength:
 Style/Documentation:
   Exclude:
     - 'gen/**/*'
+    - 'lib/**/*' # TODO: remove
 Naming/AccessorMethodName:
   Exclude:
     - 'gen/**/*'
-
-
-
-Layout/DotPosition:
-  EnforcedStyle: trailing
