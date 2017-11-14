@@ -1,0 +1,16 @@
+AllCops:
+  TargetRubyVersion: 2.3
+Metrics/MethodLength:
+  Exclude:
+    - 'gen/**/*'
+Metrics/ParameterLists:
+  Exclude:
+    - 'gen/**/*'
+Metrics/LineLength:
+  Exclude:
+    - 'gen/**/*'
+Style/DoubleNegation:
+  Exclude:
+    - 'gen/**/*'
+Layout/DotPosition:
+  EnforcedStyle: trailing

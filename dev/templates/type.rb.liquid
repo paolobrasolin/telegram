@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Telegram
   module API
     module Bot
@@ -6,28 +8,28 @@ module Telegram
         # {{ line }}
         #
 {%- endfor %}
-{%- for field in type.fields %}
-        # @!attribute [rw] {{ field.name }}
-        #   @return [{{ field.type }}] {{ field.description }}
+{%- for attribute in type.attributes %}
+        # @!attribute [rw] {{ attribute.snake_name }}
+        #   @return [{{ attribute.signature }}] {{ attribute.description }}
 {%- endfor %}
-        {{ type.name }} = Struct.new(
-            {%- for field in type.fields -%}
-              :{{- field.name -}}
-              {%- unless field == type.fields.last %}, {% endunless -%}
-            {%- endfor -%}
+        {{ type.pascal_name }} = Struct.new(
+        {%- for attribute in type.attributes %}
+          :{{ attribute.snake_name -}}
+          {%- unless attribute == type.attributes.last -%},{%- endunless -%}
+        {%- endfor %}
         ) do
           def initialize(
-            {%- for field in type.fields -%}
-              {{- field.name -}}:
-                {%- if field.optional %} nil{% endif -%}
-                {%- unless field == type.fields.last %}, {% endunless -%}
-            {%- endfor -%}
+          {%- for attribute in type.attributes %}
+            {{ attribute.snake_name -}}:
+              {%- if attribute.optional %} nil{%- endif -%}
+              {%- unless attribute == type.attributes.last -%},{%- endunless -%}
+          {%- endfor %}
           )
             super(
-              {%- for field in type.fields -%}
-                {{- field.name -}}
-                {%- unless field == type.fields.last %}, {% endunless -%}
-              {%- endfor -%}
+            {%- for attribute in type.attributes %}
+              {{ attribute.caster -}}
+              {%- unless attribute == type.attributes.last -%},{%- endunless %}
+            {%- endfor %}
             )
           end
         end

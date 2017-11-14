@@ -6,7 +6,15 @@ module Telegram
     module Bot
       module Client
         def self.post(url:, parameters: {})
-          JSON.parse RestClient.post(url, parameters)
+          response = RestClient.post(url, parameters)
+          symbolize_keys JSON.parse(response)
+        end
+
+        def self.symbolize_keys(object)
+          return object unless object.is_a?(Hash)
+          object.map do |key, value|
+            [key.to_sym, symbolize_keys(value)]
+          end.to_h
         end
       end
     end
