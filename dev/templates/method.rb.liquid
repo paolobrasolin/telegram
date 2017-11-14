@@ -1,19 +1,17 @@
+# frozen_string_literal: true
+
 module Telegram
   module API
     module Bot
       module Methods
-{%- for line in method.description %}
-        # {{ line }}
-        #
-{%- endfor %}
 {%- if method.parameters == empty %}
         def {{ method.snake_name }}
-          url = build_url method_name: '{{ method.camel_name }}'
-          Telegram::API::Bot::Client.post url: url, parameters: {}
+          Client.post url: build_url('{{ method.camel_name }}'),
+                      parameters: {}
         end
-{% else %}
+{%- else -%}
 {%- for parameter in method.parameters %}
-        # @param {{parameter.snake_name}} [{{parameter.signature}}] {{ parameter.description }}
+        # @param {{parameter.snake_name}} [{{parameter.signature}}]
 {%- endfor %}
         def {{ method.snake_name }}(
 {%- for parameter in method.parameters %}
@@ -22,9 +20,13 @@ module Telegram
             {%- unless parameter == method.parameters.last %},{% endunless %}
 {%- endfor %}
         )
-          url = build_url method_name: '{{ method.camel_name }}'
-          parameters = method_parameters_hash __method__, binding
-          Telegram::API::Bot::Client.post url: url, parameters: parameters
+          Client.post url: build_url('{{ method.camel_name }}'),
+                      parameters: {
+{%- for parameter in method.parameters %}
+                        {{ parameter.snake_name }}: {{ parameter.snake_name -}}
+                        {%- unless parameter == method.parameters.last %},{% endunless %}
+{%- endfor %}
+                      }
         end
 {%- endif %}
       end

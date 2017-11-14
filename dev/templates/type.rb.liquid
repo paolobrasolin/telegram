@@ -4,13 +4,9 @@ module Telegram
   module API
     module Bot
       module Types
-{%- for line in type.description %}
-        # {{ line }}
-        #
-{%- endfor %}
 {%- for attribute in type.attributes %}
         # @!attribute [rw] {{ attribute.snake_name }}
-        #   @return [{{ attribute.signature }}] {{ attribute.description }}
+        #   @return [{{ attribute.signature }}]
 {%- endfor %}
         {{ type.pascal_name }} = Struct.new(
         {%- for attribute in type.attributes %}

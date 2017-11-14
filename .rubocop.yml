@@ -12,5 +12,32 @@ Metrics/LineLength:
 Style/DoubleNegation:
   Exclude:
     - 'gen/**/*'
+Layout/TrailingWhitespace: # TODO: remove
+  Exclude:
+    - 'gen/**/*'
+Metrics/AbcSize:
+  Exclude:
+    - 'gen/**/*'
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'gen/**/*'
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'gen/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'gen/**/*'
+Metrics/ModuleLength:
+  Exclude:
+    - 'gen/**/*'
+Style/Documentation:
+  Exclude:
+    - 'gen/**/*'
+Naming/AccessorMethodName:
+  Exclude:
+    - 'gen/**/*'
+
+
+
 Layout/DotPosition:
   EnforcedStyle: trailing

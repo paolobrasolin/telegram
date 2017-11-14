@@ -8,7 +8,7 @@ module Telegram
       module Methods
         private
 
-        def build_url(method_name:)
+        def build_url(method_name)
           [::Telegram::API::Bot::URL, "bot#{@token}", method_name].join('/')
         end
 
