@@ -4,6 +4,8 @@ module Telegram
   module API
     module Bot
       module Methods
+        # See the {{ "{" }}{{ method.url }} official documentation}.
+        #
 {%- if method.parameters == empty %}
         def {{ method.snake_name }}
           Client.post url: build_url('{{ method.camel_name }}'),

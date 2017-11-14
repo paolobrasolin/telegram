@@ -4,6 +4,8 @@ module Telegram
   module API
     module Bot
       module Types
+        # See the {{ "{" }}{{ type.url }} official documentation}.
+        #
 {%- for attribute in type.attributes %}
         # @!attribute [rw] {{ attribute.snake_name }}
         #   @return [{{ attribute.signature }}]
