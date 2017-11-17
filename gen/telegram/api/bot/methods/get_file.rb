@@ -10,10 +10,15 @@ module Telegram
         def get_file(
           file_id:
         )
-          Client.post url: build_url('getFile'),
-                      parameters: {
-                        file_id: file_id
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::File.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getFile'),
+              parameters: {
+                file_id: file_id
+              }
+            )
+          )
         end
       end
     end

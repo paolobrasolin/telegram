@@ -8,8 +8,14 @@ module Telegram
         #
 {%- if method.parameters == empty %}
         def {{ method.snake_name }}
-          Client.post url: build_url('{{ method.camel_name }}'),
-                      parameters: {}
+          Types::Response.new(
+{%- if method.result_caster %}
+            result_caster: {{ method.result_caster -}},{%- endif %}
+            **Client.post(
+              url: build_url('{{ method.camel_name }}'),
+              parameters: {}
+            )
+          )
         end
 {%- else -%}
 {%- for parameter in method.parameters %}
@@ -22,13 +28,19 @@ module Telegram
             {%- unless parameter == method.parameters.last %},{% endunless %}
 {%- endfor %}
         )
-          Client.post url: build_url('{{ method.camel_name }}'),
-                      parameters: {
+          Types::Response.new(
+{%- if method.result_caster %}
+            result_caster: {{ method.result_caster -}},{%- endif %}
+            **Client.post(
+              url: build_url('{{ method.camel_name }}'),
+              parameters: {
 {%- for parameter in method.parameters %}
-                        {{ parameter.snake_name }}: {{ parameter.snake_name -}}
-                        {%- unless parameter == method.parameters.last %},{% endunless %}
+                {{ parameter.snake_name }}: {{ parameter.snake_name -}}
+                {%- unless parameter == method.parameters.last %},{% endunless %}
 {%- endfor %}
-                      }
+              }
+            )
+          )
         end
 {%- endif %}
       end

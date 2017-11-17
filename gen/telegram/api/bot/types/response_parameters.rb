@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -14,6 +16,8 @@ module Telegram
           :migrate_to_chat_id,
           :retry_after
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             migrate_to_chat_id: nil,
             retry_after: nil

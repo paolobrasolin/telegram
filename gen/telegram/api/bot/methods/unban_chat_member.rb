@@ -12,11 +12,15 @@ module Telegram
           chat_id:,
           user_id:
         )
-          Client.post url: build_url('unbanChatMember'),
-                      parameters: {
-                        chat_id: chat_id,
-                        user_id: user_id
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('unbanChatMember'),
+              parameters: {
+                chat_id: chat_id,
+                user_id: user_id
+              }
+            )
+          )
         end
       end
     end

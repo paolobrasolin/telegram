@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -14,6 +16,8 @@ module Telegram
           :remove_keyboard,
           :selective
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             remove_keyboard:,
             selective: nil

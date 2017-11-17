@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -32,6 +34,8 @@ module Telegram
           :reply_markup,
           :input_message_content
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             type:,
             id:,
@@ -49,8 +53,8 @@ module Telegram
               (title&.to_s unless title.nil?),
               (description&.to_s unless description.nil?),
               (caption&.to_s unless caption.nil?),
-              (InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?),
-              (InputMessageContent.new(**input_message_content.to_h) unless input_message_content.nil?)
+              (Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?),
+              (Types::InputMessageContent.new(**input_message_content.to_h) unless input_message_content.nil?)
             )
           end
         end

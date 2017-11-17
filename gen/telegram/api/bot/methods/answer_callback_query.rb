@@ -18,14 +18,18 @@ module Telegram
           url: nil,
           cache_time: nil
         )
-          Client.post url: build_url('answerCallbackQuery'),
-                      parameters: {
-                        callback_query_id: callback_query_id,
-                        text: text,
-                        show_alert: show_alert,
-                        url: url,
-                        cache_time: cache_time
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('answerCallbackQuery'),
+              parameters: {
+                callback_query_id: callback_query_id,
+                text: text,
+                show_alert: show_alert,
+                url: url,
+                cache_time: cache_time
+              }
+            )
+          )
         end
       end
     end

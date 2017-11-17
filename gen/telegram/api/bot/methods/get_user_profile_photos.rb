@@ -14,12 +14,17 @@ module Telegram
           offset: nil,
           limit: nil
         )
-          Client.post url: build_url('getUserProfilePhotos'),
-                      parameters: {
-                        user_id: user_id,
-                        offset: offset,
-                        limit: limit
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::UserProfilePhotos.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getUserProfilePhotos'),
+              parameters: {
+                user_id: user_id,
+                offset: offset,
+                limit: limit
+              }
+            )
+          )
         end
       end
     end

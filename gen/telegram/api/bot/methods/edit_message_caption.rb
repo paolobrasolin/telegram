@@ -18,14 +18,18 @@ module Telegram
           caption: nil,
           reply_markup: nil
         )
-          Client.post url: build_url('editMessageCaption'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        inline_message_id: inline_message_id,
-                        caption: caption,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('editMessageCaption'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id,
+                inline_message_id: inline_message_id,
+                caption: caption,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

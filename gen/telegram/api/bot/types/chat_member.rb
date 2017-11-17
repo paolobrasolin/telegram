@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -56,6 +58,8 @@ module Telegram
           :can_send_other_messages,
           :can_add_web_page_previews
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             user:,
             status:,
@@ -75,7 +79,7 @@ module Telegram
             can_add_web_page_previews: nil
           )
             super(
-              User.new(**user.to_h),
+              Types::User.new(**user.to_h),
               status&.to_s,
               (until_date&.to_i unless until_date.nil?),
               (!!can_be_edited unless can_be_edited.nil?),

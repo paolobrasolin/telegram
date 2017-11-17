@@ -18,14 +18,18 @@ module Telegram
           emojis:,
           mask_position: nil
         )
-          Client.post url: build_url('addStickerToSet'),
-                      parameters: {
-                        user_id: user_id,
-                        name: name,
-                        png_sticker: png_sticker,
-                        emojis: emojis,
-                        mask_position: mask_position
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('addStickerToSet'),
+              parameters: {
+                user_id: user_id,
+                name: name,
+                png_sticker: png_sticker,
+                emojis: emojis,
+                mask_position: mask_position
+              }
+            )
+          )
         end
       end
     end

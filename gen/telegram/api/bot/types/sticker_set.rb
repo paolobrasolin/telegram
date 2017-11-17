@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -20,6 +22,8 @@ module Telegram
           :contains_masks,
           :stickers
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             name:,
             title:,
@@ -30,7 +34,7 @@ module Telegram
               name&.to_s,
               title&.to_s,
               (!!contains_masks unless contains_masks.nil?),
-              stickers&.to_a&.map { |o| Sticker.new(**o.to_h) }
+              stickers&.to_a&.map { |o| Types::Sticker.new(**o.to_h) }
             )
           end
         end

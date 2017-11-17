@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -47,6 +49,8 @@ module Telegram
           :sticker_set_name,
           :can_set_sticker_set
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             id:,
             type:,
@@ -70,10 +74,10 @@ module Telegram
               (first_name&.to_s unless first_name.nil?),
               (last_name&.to_s unless last_name.nil?),
               (!!all_members_are_administrators unless all_members_are_administrators.nil?),
-              (ChatPhoto.new(**photo.to_h) unless photo.nil?),
+              (Types::ChatPhoto.new(**photo.to_h) unless photo.nil?),
               (description&.to_s unless description.nil?),
               (invite_link&.to_s unless invite_link.nil?),
-              (Message.new(**pinned_message.to_h) unless pinned_message.nil?),
+              (Types::Message.new(**pinned_message.to_h) unless pinned_message.nil?),
               (sticker_set_name&.to_s unless sticker_set_name.nil?),
               (!!can_set_sticker_set unless can_set_sticker_set.nil?)
             )

@@ -12,11 +12,15 @@ module Telegram
           chat_id:,
           photo:
         )
-          Client.post url: build_url('setChatPhoto'),
-                      parameters: {
-                        chat_id: chat_id,
-                        photo: photo
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setChatPhoto'),
+              parameters: {
+                chat_id: chat_id,
+                photo: photo
+              }
+            )
+          )
         end
       end
     end

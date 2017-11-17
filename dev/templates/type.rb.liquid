@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -16,6 +18,8 @@ module Telegram
           {%- unless attribute == type.attributes.last -%},{%- endunless -%}
         {%- endfor %}
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
           {%- for attribute in type.attributes %}
             {{ attribute.snake_name -}}:

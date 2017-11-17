@@ -16,13 +16,18 @@ module Telegram
           disable_notification: nil,
           message_id:
         )
-          Client.post url: build_url('forwardMessage'),
-                      parameters: {
-                        chat_id: chat_id,
-                        from_chat_id: from_chat_id,
-                        disable_notification: disable_notification,
-                        message_id: message_id
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::Message.new(**r.to_h) },
+            **Client.post(
+              url: build_url('forwardMessage'),
+              parameters: {
+                chat_id: chat_id,
+                from_chat_id: from_chat_id,
+                disable_notification: disable_notification,
+                message_id: message_id
+              }
+            )
+          )
         end
       end
     end

@@ -12,11 +12,15 @@ module Telegram
           chat_id:,
           message_id:
         )
-          Client.post url: build_url('deleteMessage'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('deleteMessage'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id
+              }
+            )
+          )
         end
       end
     end

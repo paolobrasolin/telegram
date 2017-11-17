@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -17,6 +19,8 @@ module Telegram
           :file_size,
           :file_path
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             file_id:,
             file_size: nil,

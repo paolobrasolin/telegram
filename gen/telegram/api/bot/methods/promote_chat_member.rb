@@ -28,19 +28,23 @@ module Telegram
           can_pin_messages: nil,
           can_promote_members: nil
         )
-          Client.post url: build_url('promoteChatMember'),
-                      parameters: {
-                        chat_id: chat_id,
-                        user_id: user_id,
-                        can_change_info: can_change_info,
-                        can_post_messages: can_post_messages,
-                        can_edit_messages: can_edit_messages,
-                        can_delete_messages: can_delete_messages,
-                        can_invite_users: can_invite_users,
-                        can_restrict_members: can_restrict_members,
-                        can_pin_messages: can_pin_messages,
-                        can_promote_members: can_promote_members
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('promoteChatMember'),
+              parameters: {
+                chat_id: chat_id,
+                user_id: user_id,
+                can_change_info: can_change_info,
+                can_post_messages: can_post_messages,
+                can_edit_messages: can_edit_messages,
+                can_delete_messages: can_delete_messages,
+                can_invite_users: can_invite_users,
+                can_restrict_members: can_restrict_members,
+                can_pin_messages: can_pin_messages,
+                can_promote_members: can_promote_members
+              }
+            )
+          )
         end
       end
     end

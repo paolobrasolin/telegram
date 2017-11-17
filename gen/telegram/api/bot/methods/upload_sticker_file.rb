@@ -12,11 +12,16 @@ module Telegram
           user_id:,
           png_sticker:
         )
-          Client.post url: build_url('uploadStickerFile'),
-                      parameters: {
-                        user_id: user_id,
-                        png_sticker: png_sticker
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::File.new(**r.to_h) },
+            **Client.post(
+              url: build_url('uploadStickerFile'),
+              parameters: {
+                user_id: user_id,
+                png_sticker: png_sticker
+              }
+            )
+          )
         end
       end
     end

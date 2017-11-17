@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -14,13 +16,15 @@ module Telegram
           :total_count,
           :photos
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             total_count:,
             photos:
           )
             super(
               total_count&.to_i,
-              photos&.to_a&.map { |a| a.to_a.map { |o| PhotoSize.new(**o.to_h) } }
+              photos&.to_a&.map { |a| a.to_a.map { |o| Types::PhotoSize.new(**o.to_h) } }
             )
           end
         end

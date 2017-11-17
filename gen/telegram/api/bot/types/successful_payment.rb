@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -29,6 +31,8 @@ module Telegram
           :telegram_payment_charge_id,
           :provider_payment_charge_id
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             currency:,
             total_amount:,
@@ -43,7 +47,7 @@ module Telegram
               total_amount&.to_i,
               invoice_payload&.to_s,
               (shipping_option_id&.to_s unless shipping_option_id.nil?),
-              (OrderInfo.new(**order_info.to_h) unless order_info.nil?),
+              (Types::OrderInfo.new(**order_info.to_h) unless order_info.nil?),
               telegram_payment_charge_id&.to_s,
               provider_payment_charge_id&.to_s
             )

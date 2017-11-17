@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -23,16 +25,19 @@ module Telegram
           :error_code,
           :parameters
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             ok:,
             result: nil,
             description: nil,
             error_code: nil,
-            parameters: nil
+            parameters: nil,
+            result_caster: nil
           )
             super(
               (!!ok unless ok.nil?),
-              result,
+              ((result_caster.call(result) unless result_caster.nil?) || result),
               description&.to_s,
               error_code&.to_i,
               (ResponseParameters.new(**parameters.to_h) unless parameters.nil?)

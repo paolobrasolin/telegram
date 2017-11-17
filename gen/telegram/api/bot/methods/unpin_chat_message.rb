@@ -10,10 +10,14 @@ module Telegram
         def unpin_chat_message(
           chat_id:
         )
-          Client.post url: build_url('unpinChatMessage'),
-                      parameters: {
-                        chat_id: chat_id
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('unpinChatMessage'),
+              parameters: {
+                chat_id: chat_id
+              }
+            )
+          )
         end
       end
     end

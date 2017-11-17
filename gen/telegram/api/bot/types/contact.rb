@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -20,6 +22,8 @@ module Telegram
           :last_name,
           :user_id
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             phone_number:,
             first_name:,

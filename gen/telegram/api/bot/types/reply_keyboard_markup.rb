@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -20,6 +22,8 @@ module Telegram
           :one_time_keyboard,
           :selective
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             keyboard:,
             resize_keyboard: nil,
@@ -27,7 +31,7 @@ module Telegram
             selective: nil
           )
             super(
-              keyboard&.to_a&.map { |a| a.to_a.map { |o| KeyboardButton.new(**o.to_h) } },
+              keyboard&.to_a&.map { |a| a.to_a.map { |o| Types::KeyboardButton.new(**o.to_h) } },
               (!!resize_keyboard unless resize_keyboard.nil?),
               (!!one_time_keyboard unless one_time_keyboard.nil?),
               (!!selective unless selective.nil?)

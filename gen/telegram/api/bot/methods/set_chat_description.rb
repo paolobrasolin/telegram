@@ -12,11 +12,15 @@ module Telegram
           chat_id:,
           description: nil
         )
-          Client.post url: build_url('setChatDescription'),
-                      parameters: {
-                        chat_id: chat_id,
-                        description: description
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setChatDescription'),
+              parameters: {
+                chat_id: chat_id,
+                description: description
+              }
+            )
+          )
         end
       end
     end

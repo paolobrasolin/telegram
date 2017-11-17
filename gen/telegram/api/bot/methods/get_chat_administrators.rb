@@ -10,10 +10,14 @@ module Telegram
         def get_chat_administrators(
           chat_id:
         )
-          Client.post url: build_url('getChatAdministrators'),
-                      parameters: {
-                        chat_id: chat_id
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('getChatAdministrators'),
+              parameters: {
+                chat_id: chat_id
+              }
+            )
+          )
         end
       end
     end

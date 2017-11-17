@@ -12,11 +12,15 @@ module Telegram
           sticker:,
           position:
         )
-          Client.post url: build_url('setStickerPositionInSet'),
-                      parameters: {
-                        sticker: sticker,
-                        position: position
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setStickerPositionInSet'),
+              parameters: {
+                sticker: sticker,
+                position: position
+              }
+            )
+          )
         end
       end
     end

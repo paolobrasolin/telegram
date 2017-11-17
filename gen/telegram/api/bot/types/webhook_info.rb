@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -29,6 +31,8 @@ module Telegram
           :max_connections,
           :allowed_updates
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             url:,
             has_custom_certificate:,

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -23,6 +25,8 @@ module Telegram
           :thumb,
           :file_size
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             file_id:,
             length:,
@@ -34,7 +38,7 @@ module Telegram
               file_id&.to_s,
               length&.to_i,
               duration&.to_i,
-              (PhotoSize.new(**thumb.to_h) unless thumb.nil?),
+              (Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?),
               (file_size&.to_i unless file_size.nil?)
             )
           end

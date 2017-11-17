@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -32,6 +34,8 @@ module Telegram
           :mask_position,
           :file_size
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             file_id:,
             width:,
@@ -46,10 +50,10 @@ module Telegram
               file_id&.to_s,
               width&.to_i,
               height&.to_i,
-              (PhotoSize.new(**thumb.to_h) unless thumb.nil?),
+              (Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?),
               (emoji&.to_s unless emoji.nil?),
               (set_name&.to_s unless set_name.nil?),
-              (MaskPosition.new(**mask_position.to_h) unless mask_position.nil?),
+              (Types::MaskPosition.new(**mask_position.to_h) unless mask_position.nil?),
               (file_size&.to_i unless file_size.nil?)
             )
           end

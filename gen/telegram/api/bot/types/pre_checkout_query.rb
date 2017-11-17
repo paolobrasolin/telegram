@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -29,6 +31,8 @@ module Telegram
           :shipping_option_id,
           :order_info
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             id:,
             from:,
@@ -40,12 +44,12 @@ module Telegram
           )
             super(
               id&.to_s,
-              User.new(**from.to_h),
+              Types::User.new(**from.to_h),
               currency&.to_s,
               total_amount&.to_i,
               invoice_payload&.to_s,
               (shipping_option_id&.to_s unless shipping_option_id.nil?),
-              (OrderInfo.new(**order_info.to_h) unless order_info.nil?)
+              (Types::OrderInfo.new(**order_info.to_h) unless order_info.nil?)
             )
           end
         end

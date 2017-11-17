@@ -48,29 +48,34 @@ module Telegram
           reply_to_message_id: nil,
           reply_markup: nil
         )
-          Client.post url: build_url('sendInvoice'),
-                      parameters: {
-                        chat_id: chat_id,
-                        title: title,
-                        description: description,
-                        payload: payload,
-                        provider_token: provider_token,
-                        start_parameter: start_parameter,
-                        currency: currency,
-                        prices: prices,
-                        photo_url: photo_url,
-                        photo_size: photo_size,
-                        photo_width: photo_width,
-                        photo_height: photo_height,
-                        need_name: need_name,
-                        need_phone_number: need_phone_number,
-                        need_email: need_email,
-                        need_shipping_address: need_shipping_address,
-                        is_flexible: is_flexible,
-                        disable_notification: disable_notification,
-                        reply_to_message_id: reply_to_message_id,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::Message.new(**r.to_h) },
+            **Client.post(
+              url: build_url('sendInvoice'),
+              parameters: {
+                chat_id: chat_id,
+                title: title,
+                description: description,
+                payload: payload,
+                provider_token: provider_token,
+                start_parameter: start_parameter,
+                currency: currency,
+                prices: prices,
+                photo_url: photo_url,
+                photo_size: photo_size,
+                photo_width: photo_width,
+                photo_height: photo_height,
+                need_name: need_name,
+                need_phone_number: need_phone_number,
+                need_email: need_email,
+                need_shipping_address: need_shipping_address,
+                is_flexible: is_flexible,
+                disable_notification: disable_notification,
+                reply_to_message_id: reply_to_message_id,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

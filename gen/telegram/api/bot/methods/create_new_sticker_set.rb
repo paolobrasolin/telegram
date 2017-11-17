@@ -22,16 +22,20 @@ module Telegram
           contains_masks: nil,
           mask_position: nil
         )
-          Client.post url: build_url('createNewStickerSet'),
-                      parameters: {
-                        user_id: user_id,
-                        name: name,
-                        title: title,
-                        png_sticker: png_sticker,
-                        emojis: emojis,
-                        contains_masks: contains_masks,
-                        mask_position: mask_position
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('createNewStickerSet'),
+              parameters: {
+                user_id: user_id,
+                name: name,
+                title: title,
+                png_sticker: png_sticker,
+                emojis: emojis,
+                contains_masks: contains_masks,
+                mask_position: mask_position
+              }
+            )
+          )
         end
       end
     end

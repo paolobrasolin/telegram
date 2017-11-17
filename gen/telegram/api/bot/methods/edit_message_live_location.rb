@@ -20,15 +20,19 @@ module Telegram
           longitude:,
           reply_markup: nil
         )
-          Client.post url: build_url('editMessageLiveLocation'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        inline_message_id: inline_message_id,
-                        latitude: latitude,
-                        longitude: longitude,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('editMessageLiveLocation'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id,
+                inline_message_id: inline_message_id,
+                latitude: latitude,
+                longitude: longitude,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

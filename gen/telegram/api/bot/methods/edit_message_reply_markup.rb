@@ -16,13 +16,17 @@ module Telegram
           inline_message_id: nil,
           reply_markup: nil
         )
-          Client.post url: build_url('editMessageReplyMarkup'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        inline_message_id: inline_message_id,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('editMessageReplyMarkup'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id,
+                inline_message_id: inline_message_id,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

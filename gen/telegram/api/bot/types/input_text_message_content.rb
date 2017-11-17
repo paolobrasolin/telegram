@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -17,6 +19,8 @@ module Telegram
           :parse_mode,
           :disable_web_page_preview
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             message_text:,
             parse_mode: nil,

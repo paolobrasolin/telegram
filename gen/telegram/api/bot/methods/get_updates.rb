@@ -16,13 +16,17 @@ module Telegram
           timeout: nil,
           allowed_updates: nil
         )
-          Client.post url: build_url('getUpdates'),
-                      parameters: {
-                        offset: offset,
-                        limit: limit,
-                        timeout: timeout,
-                        allowed_updates: allowed_updates
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('getUpdates'),
+              parameters: {
+                offset: offset,
+                limit: limit,
+                timeout: timeout,
+                allowed_updates: allowed_updates
+              }
+            )
+          )
         end
       end
     end

@@ -12,11 +12,15 @@ module Telegram
           chat_id:,
           sticker_set_name:
         )
-          Client.post url: build_url('setChatStickerSet'),
-                      parameters: {
-                        chat_id: chat_id,
-                        sticker_set_name: sticker_set_name
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setChatStickerSet'),
+              parameters: {
+                chat_id: chat_id,
+                sticker_set_name: sticker_set_name
+              }
+            )
+          )
         end
       end
     end

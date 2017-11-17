@@ -14,12 +14,16 @@ module Telegram
           user_id:,
           until_date: nil
         )
-          Client.post url: build_url('kickChatMember'),
-                      parameters: {
-                        chat_id: chat_id,
-                        user_id: user_id,
-                        until_date: until_date
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('kickChatMember'),
+              parameters: {
+                chat_id: chat_id,
+                user_id: user_id,
+                until_date: until_date
+              }
+            )
+          )
         end
       end
     end

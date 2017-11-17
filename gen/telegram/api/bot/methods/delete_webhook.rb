@@ -7,8 +7,12 @@ module Telegram
         # See the {https://core.telegram.org/bots/api#deletewebhook official documentation}.
         #
         def delete_webhook
-          Client.post url: build_url('deleteWebhook'),
-                      parameters: {}
+          Types::Response.new(
+            **Client.post(
+              url: build_url('deleteWebhook'),
+              parameters: {}
+            )
+          )
         end
       end
     end

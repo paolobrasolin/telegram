@@ -10,10 +10,15 @@ module Telegram
         def get_chat(
           chat_id:
         )
-          Client.post url: build_url('getChat'),
-                      parameters: {
-                        chat_id: chat_id
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::Chat.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getChat'),
+              parameters: {
+                chat_id: chat_id
+              }
+            )
+          )
         end
       end
     end

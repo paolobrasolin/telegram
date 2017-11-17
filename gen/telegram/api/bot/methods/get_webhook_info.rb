@@ -7,8 +7,13 @@ module Telegram
         # See the {https://core.telegram.org/bots/api#getwebhookinfo official documentation}.
         #
         def get_webhook_info
-          Client.post url: build_url('getWebhookInfo'),
-                      parameters: {}
+          Types::Response.new(
+            result_caster: ->(r) { Types::WebhookInfo.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getWebhookInfo'),
+              parameters: {}
+            )
+          )
         end
       end
     end

@@ -7,8 +7,13 @@ module Telegram
         # See the {https://core.telegram.org/bots/api#getme official documentation}.
         #
         def get_me
-          Client.post url: build_url('getMe'),
-                      parameters: {}
+          Types::Response.new(
+            result_caster: ->(r) { Types::User.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getMe'),
+              parameters: {}
+            )
+          )
         end
       end
     end

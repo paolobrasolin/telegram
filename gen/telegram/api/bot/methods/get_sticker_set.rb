@@ -10,10 +10,15 @@ module Telegram
         def get_sticker_set(
           name:
         )
-          Client.post url: build_url('getStickerSet'),
-                      parameters: {
-                        name: name
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::StickerSet.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getStickerSet'),
+              parameters: {
+                name: name
+              }
+            )
+          )
         end
       end
     end

@@ -22,16 +22,20 @@ module Telegram
           message_id: nil,
           inline_message_id: nil
         )
-          Client.post url: build_url('setGameScore'),
-                      parameters: {
-                        user_id: user_id,
-                        score: score,
-                        force: force,
-                        disable_edit_message: disable_edit_message,
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        inline_message_id: inline_message_id
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setGameScore'),
+              parameters: {
+                user_id: user_id,
+                score: score,
+                force: force,
+                disable_edit_message: disable_edit_message,
+                chat_id: chat_id,
+                message_id: message_id,
+                inline_message_id: inline_message_id
+              }
+            )
+          )
         end
       end
     end

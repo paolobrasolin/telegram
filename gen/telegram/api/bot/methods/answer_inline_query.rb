@@ -22,16 +22,20 @@ module Telegram
           switch_pm_text: nil,
           switch_pm_parameter: nil
         )
-          Client.post url: build_url('answerInlineQuery'),
-                      parameters: {
-                        inline_query_id: inline_query_id,
-                        results: results,
-                        cache_time: cache_time,
-                        is_personal: is_personal,
-                        next_offset: next_offset,
-                        switch_pm_text: switch_pm_text,
-                        switch_pm_parameter: switch_pm_parameter
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('answerInlineQuery'),
+              parameters: {
+                inline_query_id: inline_query_id,
+                results: results,
+                cache_time: cache_time,
+                is_personal: is_personal,
+                next_offset: next_offset,
+                switch_pm_text: switch_pm_text,
+                switch_pm_parameter: switch_pm_parameter
+              }
+            )
+          )
         end
       end
     end

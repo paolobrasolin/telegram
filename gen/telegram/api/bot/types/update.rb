@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -38,6 +40,8 @@ module Telegram
           :shipping_query,
           :pre_checkout_query
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             update_id:,
             message: nil,
@@ -52,15 +56,15 @@ module Telegram
           )
             super(
               update_id&.to_i,
-              (Message.new(**message.to_h) unless message.nil?),
-              (Message.new(**edited_message.to_h) unless edited_message.nil?),
-              (Message.new(**channel_post.to_h) unless channel_post.nil?),
-              (Message.new(**edited_channel_post.to_h) unless edited_channel_post.nil?),
-              (InlineQuery.new(**inline_query.to_h) unless inline_query.nil?),
-              (ChosenInlineResult.new(**chosen_inline_result.to_h) unless chosen_inline_result.nil?),
-              (CallbackQuery.new(**callback_query.to_h) unless callback_query.nil?),
-              (ShippingQuery.new(**shipping_query.to_h) unless shipping_query.nil?),
-              (PreCheckoutQuery.new(**pre_checkout_query.to_h) unless pre_checkout_query.nil?)
+              (Types::Message.new(**message.to_h) unless message.nil?),
+              (Types::Message.new(**edited_message.to_h) unless edited_message.nil?),
+              (Types::Message.new(**channel_post.to_h) unless channel_post.nil?),
+              (Types::Message.new(**edited_channel_post.to_h) unless edited_channel_post.nil?),
+              (Types::InlineQuery.new(**inline_query.to_h) unless inline_query.nil?),
+              (Types::ChosenInlineResult.new(**chosen_inline_result.to_h) unless chosen_inline_result.nil?),
+              (Types::CallbackQuery.new(**callback_query.to_h) unless callback_query.nil?),
+              (Types::ShippingQuery.new(**shipping_query.to_h) unless shipping_query.nil?),
+              (Types::PreCheckoutQuery.new(**pre_checkout_query.to_h) unless pre_checkout_query.nil?)
             )
           end
         end

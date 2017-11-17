@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -26,6 +28,8 @@ module Telegram
           :text_entities,
           :animation
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             title:,
             description:,
@@ -37,10 +41,10 @@ module Telegram
             super(
               title&.to_s,
               description&.to_s,
-              photo&.to_a&.map { |o| PhotoSize.new(**o.to_h) },
+              photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) },
               (text&.to_s unless text.nil?),
-              (text_entities&.to_a&.map { |o| MessageEntity.new(**o.to_h) } unless text_entities.nil?),
-              (Animation.new(**animation.to_h) unless animation.nil?)
+              (text_entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless text_entities.nil?),
+              (Types::Animation.new(**animation.to_h) unless animation.nil?)
             )
           end
         end

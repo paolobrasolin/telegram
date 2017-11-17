@@ -22,16 +22,20 @@ module Telegram
           can_send_other_messages: nil,
           can_add_web_page_previews: nil
         )
-          Client.post url: build_url('restrictChatMember'),
-                      parameters: {
-                        chat_id: chat_id,
-                        user_id: user_id,
-                        until_date: until_date,
-                        can_send_messages: can_send_messages,
-                        can_send_media_messages: can_send_media_messages,
-                        can_send_other_messages: can_send_other_messages,
-                        can_add_web_page_previews: can_add_web_page_previews
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('restrictChatMember'),
+              parameters: {
+                chat_id: chat_id,
+                user_id: user_id,
+                until_date: until_date,
+                can_send_messages: can_send_messages,
+                can_send_media_messages: can_send_media_messages,
+                can_send_other_messages: can_send_other_messages,
+                can_add_web_page_previews: can_add_web_page_previews
+              }
+            )
+          )
         end
       end
     end

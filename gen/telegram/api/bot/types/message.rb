@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -128,6 +130,8 @@ module Telegram
           :invoice,
           :successful_payment
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             message_id:,
             from: nil,
@@ -172,45 +176,45 @@ module Telegram
           )
             super(
               message_id&.to_i,
-              (User.new(**from.to_h) unless from.nil?),
+              (Types::User.new(**from.to_h) unless from.nil?),
               date&.to_i,
-              Chat.new(**chat.to_h),
-              (User.new(**forward_from.to_h) unless forward_from.nil?),
-              (Chat.new(**forward_from_chat.to_h) unless forward_from_chat.nil?),
+              Types::Chat.new(**chat.to_h),
+              (Types::User.new(**forward_from.to_h) unless forward_from.nil?),
+              (Types::Chat.new(**forward_from_chat.to_h) unless forward_from_chat.nil?),
               (forward_from_message_id&.to_i unless forward_from_message_id.nil?),
               (forward_signature&.to_s unless forward_signature.nil?),
               (forward_date&.to_i unless forward_date.nil?),
-              (Message.new(**reply_to_message.to_h) unless reply_to_message.nil?),
+              (Types::Message.new(**reply_to_message.to_h) unless reply_to_message.nil?),
               (edit_date&.to_i unless edit_date.nil?),
               (author_signature&.to_s unless author_signature.nil?),
               (text&.to_s unless text.nil?),
-              (entities&.to_a&.map { |o| MessageEntity.new(**o.to_h) } unless entities.nil?),
-              (caption_entities&.to_a&.map { |o| MessageEntity.new(**o.to_h) } unless caption_entities.nil?),
-              (Audio.new(**audio.to_h) unless audio.nil?),
-              (Document.new(**document.to_h) unless document.nil?),
-              (Game.new(**game.to_h) unless game.nil?),
-              (photo&.to_a&.map { |o| PhotoSize.new(**o.to_h) } unless photo.nil?),
-              (Sticker.new(**sticker.to_h) unless sticker.nil?),
-              (Video.new(**video.to_h) unless video.nil?),
-              (Voice.new(**voice.to_h) unless voice.nil?),
-              (VideoNote.new(**video_note.to_h) unless video_note.nil?),
+              (entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless entities.nil?),
+              (caption_entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless caption_entities.nil?),
+              (Types::Audio.new(**audio.to_h) unless audio.nil?),
+              (Types::Document.new(**document.to_h) unless document.nil?),
+              (Types::Game.new(**game.to_h) unless game.nil?),
+              (photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) } unless photo.nil?),
+              (Types::Sticker.new(**sticker.to_h) unless sticker.nil?),
+              (Types::Video.new(**video.to_h) unless video.nil?),
+              (Types::Voice.new(**voice.to_h) unless voice.nil?),
+              (Types::VideoNote.new(**video_note.to_h) unless video_note.nil?),
               (caption&.to_s unless caption.nil?),
-              (Contact.new(**contact.to_h) unless contact.nil?),
-              (Location.new(**location.to_h) unless location.nil?),
-              (Venue.new(**venue.to_h) unless venue.nil?),
-              (new_chat_members&.to_a&.map { |o| User.new(**o.to_h) } unless new_chat_members.nil?),
-              (User.new(**left_chat_member.to_h) unless left_chat_member.nil?),
+              (Types::Contact.new(**contact.to_h) unless contact.nil?),
+              (Types::Location.new(**location.to_h) unless location.nil?),
+              (Types::Venue.new(**venue.to_h) unless venue.nil?),
+              (new_chat_members&.to_a&.map { |o| Types::User.new(**o.to_h) } unless new_chat_members.nil?),
+              (Types::User.new(**left_chat_member.to_h) unless left_chat_member.nil?),
               (new_chat_title&.to_s unless new_chat_title.nil?),
-              (new_chat_photo&.to_a&.map { |o| PhotoSize.new(**o.to_h) } unless new_chat_photo.nil?),
+              (new_chat_photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) } unless new_chat_photo.nil?),
               (!!delete_chat_photo unless delete_chat_photo.nil?),
               (!!group_chat_created unless group_chat_created.nil?),
               (!!supergroup_chat_created unless supergroup_chat_created.nil?),
               (!!channel_chat_created unless channel_chat_created.nil?),
               (migrate_to_chat_id&.to_i unless migrate_to_chat_id.nil?),
               (migrate_from_chat_id&.to_i unless migrate_from_chat_id.nil?),
-              (Message.new(**pinned_message.to_h) unless pinned_message.nil?),
-              (Invoice.new(**invoice.to_h) unless invoice.nil?),
-              (SuccessfulPayment.new(**successful_payment.to_h) unless successful_payment.nil?)
+              (Types::Message.new(**pinned_message.to_h) unless pinned_message.nil?),
+              (Types::Invoice.new(**invoice.to_h) unless invoice.nil?),
+              (Types::SuccessfulPayment.new(**successful_payment.to_h) unless successful_payment.nil?)
             )
           end
         end

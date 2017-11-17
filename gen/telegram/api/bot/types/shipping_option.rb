@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -17,6 +19,8 @@ module Telegram
           :title,
           :prices
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             id:,
             title:,
@@ -25,7 +29,7 @@ module Telegram
             super(
               id&.to_s,
               title&.to_s,
-              prices&.to_a&.map { |o| LabeledPrice.new(**o.to_h) }
+              prices&.to_a&.map { |o| Types::LabeledPrice.new(**o.to_h) }
             )
           end
         end

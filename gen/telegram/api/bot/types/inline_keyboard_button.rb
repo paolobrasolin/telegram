@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -29,6 +31,8 @@ module Telegram
           :callback_game,
           :pay
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             text:,
             url: nil,
@@ -44,7 +48,7 @@ module Telegram
               (callback_data&.to_s unless callback_data.nil?),
               (switch_inline_query&.to_s unless switch_inline_query.nil?),
               (switch_inline_query_current_chat&.to_s unless switch_inline_query_current_chat.nil?),
-              (CallbackGame.new(**callback_game.to_h) unless callback_game.nil?),
+              (Types::CallbackGame.new(**callback_game.to_h) unless callback_game.nil?),
               (!!pay unless pay.nil?)
             )
           end

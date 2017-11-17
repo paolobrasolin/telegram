@@ -10,10 +10,14 @@ module Telegram
         def delete_sticker_from_set(
           sticker:
         )
-          Client.post url: build_url('deleteStickerFromSet'),
-                      parameters: {
-                        sticker: sticker
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('deleteStickerFromSet'),
+              parameters: {
+                sticker: sticker
+              }
+            )
+          )
         end
       end
     end

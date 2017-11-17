@@ -22,16 +22,20 @@ module Telegram
           disable_web_page_preview: nil,
           reply_markup: nil
         )
-          Client.post url: build_url('editMessageText'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        inline_message_id: inline_message_id,
-                        text: text,
-                        parse_mode: parse_mode,
-                        disable_web_page_preview: disable_web_page_preview,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('editMessageText'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id,
+                inline_message_id: inline_message_id,
+                text: text,
+                parse_mode: parse_mode,
+                disable_web_page_preview: disable_web_page_preview,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

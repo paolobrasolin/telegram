@@ -5,8 +5,11 @@ require 'yaml'
 require 'nokogiri'
 require 'active_support/inflector'
 
+require 'colorize'
+
 api_types = YAML.load File.open(File.join(__dir__, 'fetched_types.yaml'))
 api_methods = YAML.load File.open(File.join(__dir__, 'fetched_methods.yaml'))
+METHODS_RETURN_TYPE = YAML.load File.open(File.join(__dir__, 'methods_return_type.yaml'))
 
 API_TYPES_NAMES = api_types.map { |a_t| a_t[:name] }.freeze
 
@@ -52,7 +55,7 @@ def type_to_caster(type, is_optional)
     case type
     when 'String'
       ->(x) { "#{x}&.to_s" }
-    when 'Integer'
+    when 'Integer', 'Int'
       ->(x) { "#{x}&.to_i" }
     when 'Float number', 'Float'
       ->(x) { "#{x}&.to_f" }
@@ -66,9 +69,9 @@ def type_to_caster(type, is_optional)
       type = Regexp.last_match[:type]
       ->(x) { "#{x}&.to_a&.map { |o| #{type_to_caster(type, false).call('o')} }" }
     when *API_TYPES_NAMES, 'CallbackGame', 'InputMessageContent'
-      ->(x) { "#{type}.new(**#{x}.to_h)" }
+      ->(x) { "Types::#{type}.new(**#{x}.to_h)" }
     else
-      raise "Unhandled caster for type: '#{type}'"
+      # raise "Unhandled caster for type: '#{type}'"
     end
   return caster unless is_optional
   ->(x) { "(#{caster.call(x)} unless #{x}.nil?)" }
@@ -123,18 +126,36 @@ def parse_method_parameters(parameters)
   end
 end
 
+# method_return_signatures = {}
+
 api_methods.map! do |method|
   snake_name = ActiveSupport::Inflector.underscore(method[:name])
   camel_name = ActiveSupport::Inflector.camelize(method[:name], false)
+
+  # desc = Nokogiri::HTML.fragment(method[:description]).content
+  # candidates = desc.split(/\b/) & API_TYPES_NAMES.dup.concat(%w[True String Int])
+  # method_return_signatures[method[:name]] = candidates
+  # method_return_signatures[method[:name]+'_desc'] = desc
+
+  if API_TYPES_NAMES.include? METHODS_RETURN_TYPE[camel_name]
+    result_caster = '->(r) { ' + type_to_caster(METHODS_RETURN_TYPE[camel_name], false).call('r') + ' }'
+  else
+    result_caster = nil
+  end
+
   raise "Unexpected case for method #{method[:name]}." unless method[:name] == camel_name
   {
     url: method[:url],
     snake_name: snake_name,
     camel_name: camel_name,
     parameters: parse_method_parameters(method[:parameters]),
+    result_caster: result_caster,
     # description: ''
   }
 end
+
+# file_path = File.join __dir__, 'methods_return_signatures.yaml'
+# File.open(file_path, 'w') { |file| file.write method_return_signatures.to_yaml }
 
 file_path = File.join __dir__, 'parsed_methods.yaml'
 File.open(file_path, 'w') { |file| file.write api_methods.to_yaml }

@@ -14,12 +14,16 @@ module Telegram
           ok:,
           error_message: nil
         )
-          Client.post url: build_url('answerPreCheckoutQuery'),
-                      parameters: {
-                        pre_checkout_query_id: pre_checkout_query_id,
-                        ok: ok,
-                        error_message: error_message
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('answerPreCheckoutQuery'),
+              parameters: {
+                pre_checkout_query_id: pre_checkout_query_id,
+                ok: ok,
+                error_message: error_message
+              }
+            )
+          )
         end
       end
     end

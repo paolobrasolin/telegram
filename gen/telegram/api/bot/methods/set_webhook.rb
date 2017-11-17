@@ -16,13 +16,17 @@ module Telegram
           max_connections: nil,
           allowed_updates: nil
         )
-          Client.post url: build_url('setWebhook'),
-                      parameters: {
-                        url: url,
-                        certificate: certificate,
-                        max_connections: max_connections,
-                        allowed_updates: allowed_updates
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('setWebhook'),
+              parameters: {
+                url: url,
+                certificate: certificate,
+                max_connections: max_connections,
+                allowed_updates: allowed_updates
+              }
+            )
+          )
         end
       end
     end

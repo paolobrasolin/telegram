@@ -14,12 +14,16 @@ module Telegram
           message_id:,
           disable_notification: nil
         )
-          Client.post url: build_url('pinChatMessage'),
-                      parameters: {
-                        chat_id: chat_id,
-                        message_id: message_id,
-                        disable_notification: disable_notification
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('pinChatMessage'),
+              parameters: {
+                chat_id: chat_id,
+                message_id: message_id,
+                disable_notification: disable_notification
+              }
+            )
+          )
         end
       end
     end

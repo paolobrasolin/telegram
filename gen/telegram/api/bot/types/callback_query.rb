@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -29,6 +31,8 @@ module Telegram
           :data,
           :game_short_name
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             id:,
             from:,
@@ -40,8 +44,8 @@ module Telegram
           )
             super(
               id&.to_s,
-              User.new(**from.to_h),
-              (Message.new(**message.to_h) unless message.nil?),
+              Types::User.new(**from.to_h),
+              (Types::Message.new(**message.to_h) unless message.nil?),
               (inline_message_id&.to_s unless inline_message_id.nil?),
               chat_instance&.to_s,
               (data&.to_s unless data.nil?),

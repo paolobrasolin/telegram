@@ -26,18 +26,23 @@ module Telegram
           reply_to_message_id: nil,
           reply_markup: nil
         )
-          Client.post url: build_url('sendVenue'),
-                      parameters: {
-                        chat_id: chat_id,
-                        latitude: latitude,
-                        longitude: longitude,
-                        title: title,
-                        address: address,
-                        foursquare_id: foursquare_id,
-                        disable_notification: disable_notification,
-                        reply_to_message_id: reply_to_message_id,
-                        reply_markup: reply_markup
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::Message.new(**r.to_h) },
+            **Client.post(
+              url: build_url('sendVenue'),
+              parameters: {
+                chat_id: chat_id,
+                latitude: latitude,
+                longitude: longitude,
+                title: title,
+                address: address,
+                foursquare_id: foursquare_id,
+                disable_notification: disable_notification,
+                reply_to_message_id: reply_to_message_id,
+                reply_markup: reply_markup
+              }
+            )
+          )
         end
       end
     end

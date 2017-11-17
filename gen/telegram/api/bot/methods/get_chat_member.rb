@@ -12,11 +12,16 @@ module Telegram
           chat_id:,
           user_id:
         )
-          Client.post url: build_url('getChatMember'),
-                      parameters: {
-                        chat_id: chat_id,
-                        user_id: user_id
-                      }
+          Types::Response.new(
+            result_caster: ->(r) { Types::ChatMember.new(**r.to_h) },
+            **Client.post(
+              url: build_url('getChatMember'),
+              parameters: {
+                chat_id: chat_id,
+                user_id: user_id
+              }
+            )
+          )
         end
       end
     end

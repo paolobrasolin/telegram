@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -23,6 +25,8 @@ module Telegram
           :query,
           :offset
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             id:,
             from:,
@@ -32,8 +36,8 @@ module Telegram
           )
             super(
               id&.to_s,
-              User.new(**from.to_h),
-              (Location.new(**location.to_h) unless location.nil?),
+              Types::User.new(**from.to_h),
+              (Types::Location.new(**location.to_h) unless location.nil?),
               query&.to_s,
               offset&.to_s
             )

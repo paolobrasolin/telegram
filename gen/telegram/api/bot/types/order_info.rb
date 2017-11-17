@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -20,6 +22,8 @@ module Telegram
           :email,
           :shipping_address
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             name: nil,
             phone_number: nil,
@@ -30,7 +34,7 @@ module Telegram
               (name&.to_s unless name.nil?),
               (phone_number&.to_s unless phone_number.nil?),
               (email&.to_s unless email.nil?),
-              (ShippingAddress.new(**shipping_address.to_h) unless shipping_address.nil?)
+              (Types::ShippingAddress.new(**shipping_address.to_h) unless shipping_address.nil?)
             )
           end
         end

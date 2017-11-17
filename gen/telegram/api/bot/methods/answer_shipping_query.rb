@@ -16,13 +16,17 @@ module Telegram
           shipping_options: nil,
           error_message: nil
         )
-          Client.post url: build_url('answerShippingQuery'),
-                      parameters: {
-                        shipping_query_id: shipping_query_id,
-                        ok: ok,
-                        shipping_options: shipping_options,
-                        error_message: error_message
-                      }
+          Types::Response.new(
+            **Client.post(
+              url: build_url('answerShippingQuery'),
+              parameters: {
+                shipping_query_id: shipping_query_id,
+                ok: ok,
+                shipping_options: shipping_options,
+                error_message: error_message
+              }
+            )
+          )
         end
       end
     end

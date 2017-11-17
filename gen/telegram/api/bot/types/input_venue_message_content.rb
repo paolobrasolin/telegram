@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
@@ -23,6 +25,8 @@ module Telegram
           :address,
           :foursquare_id
         ) do
+          include Telegram::CoreExt::Struct
+
           def initialize(
             latitude:,
             longitude:,
