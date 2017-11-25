@@ -1,0 +1,1648 @@
+[
+  {
+    "url": "https://core.telegram.org/bots/api#getupdates",
+    "name": "getUpdates",
+    "parameters": [
+      {
+        "name": "offset",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "timeout",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "allowed_updates",
+        "required": false,
+        "signature": "Array<String>"
+      }
+    ],
+    "result_signature": "Array<Update>"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setwebhook",
+    "name": "setWebhook",
+    "parameters": [
+      {
+        "name": "url",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "certificate",
+        "required": false,
+        "signature": "InputFile"
+      },
+      {
+        "name": "max_connections",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "allowed_updates",
+        "required": false,
+        "signature": "Array<String>"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#deletewebhook",
+    "name": "deleteWebhook",
+    "parameters": [
+
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getwebhookinfo",
+    "name": "getWebhookInfo",
+    "parameters": [
+
+    ],
+    "result_signature": "WebhookInfo"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getme",
+    "name": "getMe",
+    "parameters": [
+
+    ],
+    "result_signature": "User"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendmessage",
+    "name": "sendMessage",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "text",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "parse_mode",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_web_page_preview",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#forwardmessage",
+    "name": "forwardMessage",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "from_chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "message_id",
+        "required": true,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendphoto",
+    "name": "sendPhoto",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "photo",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendaudio",
+    "name": "sendAudio",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "audio",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "duration",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "performer",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "title",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#senddocument",
+    "name": "sendDocument",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "document",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendvideo",
+    "name": "sendVideo",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "video",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "duration",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "width",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "height",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendvoice",
+    "name": "sendVoice",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "voice",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "duration",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendvideonote",
+    "name": "sendVideoNote",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "video_note",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "duration",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "length",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendmediagroup",
+    "name": "sendMediaGroup",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "media",
+        "required": true,
+        "signature": "Array<InputMedia>"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "Array<Message>"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendlocation",
+    "name": "sendLocation",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "latitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "longitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "live_period",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#editmessagelivelocation",
+    "name": "editMessageLiveLocation",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "latitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "longitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#stopmessagelivelocation",
+    "name": "stopMessageLiveLocation",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendvenue",
+    "name": "sendVenue",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "latitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "longitude",
+        "required": true,
+        "signature": "Float"
+      },
+      {
+        "name": "title",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "address",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "foursquare_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendcontact",
+    "name": "sendContact",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "phone_number",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "first_name",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "last_name",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendchataction",
+    "name": "sendChatAction",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "action",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getuserprofilephotos",
+    "name": "getUserProfilePhotos",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "offset",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "limit",
+        "required": false,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "UserProfilePhotos"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getfile",
+    "name": "getFile",
+    "parameters": [
+      {
+        "name": "file_id",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "File"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#kickchatmember",
+    "name": "kickChatMember",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "until_date",
+        "required": false,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#unbanchatmember",
+    "name": "unbanChatMember",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#restrictchatmember",
+    "name": "restrictChatMember",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "until_date",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "can_send_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_send_media_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_send_other_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_add_web_page_previews",
+        "required": false,
+        "signature": "Boolean"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#promotechatmember",
+    "name": "promoteChatMember",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "can_change_info",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_post_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_edit_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_delete_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_invite_users",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_restrict_members",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_pin_messages",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "can_promote_members",
+        "required": false,
+        "signature": "Boolean"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#exportchatinvitelink",
+    "name": "exportChatInviteLink",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "String"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setchatphoto",
+    "name": "setChatPhoto",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "photo",
+        "required": true,
+        "signature": "InputFile"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#deletechatphoto",
+    "name": "deleteChatPhoto",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setchattitle",
+    "name": "setChatTitle",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "title",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setchatdescription",
+    "name": "setChatDescription",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "description",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#pinchatmessage",
+    "name": "pinChatMessage",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#unpinchatmessage",
+    "name": "unpinChatMessage",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#leavechat",
+    "name": "leaveChat",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getchat",
+    "name": "getChat",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "Chat"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getchatadministrators",
+    "name": "getChatAdministrators",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "Array<ChatMember>"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getchatmemberscount",
+    "name": "getChatMembersCount",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "Integer"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getchatmember",
+    "name": "getChatMember",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "ChatMember"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setchatstickerset",
+    "name": "setChatStickerSet",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "sticker_set_name",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#deletechatstickerset",
+    "name": "deleteChatStickerSet",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#answercallbackquery",
+    "name": "answerCallbackQuery",
+    "parameters": [
+      {
+        "name": "callback_query_id",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "text",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "show_alert",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "url",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "cache_time",
+        "required": false,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#editmessagetext",
+    "name": "editMessageText",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "text",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "parse_mode",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "disable_web_page_preview",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#editmessagecaption",
+    "name": "editMessageCaption",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "caption",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#editmessagereplymarkup",
+    "name": "editMessageReplyMarkup",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#deletemessage",
+    "name": "deleteMessage",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "message_id",
+        "required": true,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendsticker",
+    "name": "sendSticker",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer, String"
+      },
+      {
+        "name": "sticker",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getstickerset",
+    "name": "getStickerSet",
+    "parameters": [
+      {
+        "name": "name",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "StickerSet"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#uploadstickerfile",
+    "name": "uploadStickerFile",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "png_sticker",
+        "required": true,
+        "signature": "InputFile"
+      }
+    ],
+    "result_signature": "File"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#createnewstickerset",
+    "name": "createNewStickerSet",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "name",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "title",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "png_sticker",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "emojis",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "contains_masks",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "mask_position",
+        "required": false,
+        "signature": "MaskPosition"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#addstickertoset",
+    "name": "addStickerToSet",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "name",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "png_sticker",
+        "required": true,
+        "signature": "InputFile, String"
+      },
+      {
+        "name": "emojis",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "mask_position",
+        "required": false,
+        "signature": "MaskPosition"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setstickerpositioninset",
+    "name": "setStickerPositionInSet",
+    "parameters": [
+      {
+        "name": "sticker",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "position",
+        "required": true,
+        "signature": "Integer"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#deletestickerfromset",
+    "name": "deleteStickerFromSet",
+    "parameters": [
+      {
+        "name": "sticker",
+        "required": true,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#answerinlinequery",
+    "name": "answerInlineQuery",
+    "parameters": [
+      {
+        "name": "inline_query_id",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "results",
+        "required": true,
+        "signature": "Array<InlineQueryResultArticle, InlineQueryResultPhoto, InlineQueryResultGif, InlineQueryResultMpeg4Gif, InlineQueryResultVideo, InlineQueryResultAudio, InlineQueryResultVoice, InlineQueryResultDocument, InlineQueryResultLocation, InlineQueryResultVenue, InlineQueryResultContact, InlineQueryResultGame, InlineQueryResultCachedPhoto, InlineQueryResultCachedGif, InlineQueryResultCachedMpeg4Gif, InlineQueryResultCachedSticker, InlineQueryResultCachedDocument, InlineQueryResultCachedVideo, InlineQueryResultCachedVoice, InlineQueryResultCachedAudio>"
+      },
+      {
+        "name": "cache_time",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "is_personal",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "next_offset",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "switch_pm_text",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "switch_pm_parameter",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendinvoice",
+    "name": "sendInvoice",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "title",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "payload",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "provider_token",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "start_parameter",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "currency",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "prices",
+        "required": true,
+        "signature": "Array<LabeledPrice>"
+      },
+      {
+        "name": "provider_data",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "photo_url",
+        "required": false,
+        "signature": "String"
+      },
+      {
+        "name": "photo_size",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "photo_width",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "photo_height",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "need_name",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "need_phone_number",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "need_email",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "need_shipping_address",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "is_flexible",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#answershippingquery",
+    "name": "answerShippingQuery",
+    "parameters": [
+      {
+        "name": "shipping_query_id",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "ok",
+        "required": true,
+        "signature": "Boolean"
+      },
+      {
+        "name": "shipping_options",
+        "required": false,
+        "signature": "Array<ShippingOption>"
+      },
+      {
+        "name": "error_message",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#answerprecheckoutquery",
+    "name": "answerPreCheckoutQuery",
+    "parameters": [
+      {
+        "name": "pre_checkout_query_id",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "ok",
+        "required": true,
+        "signature": "Boolean"
+      },
+      {
+        "name": "error_message",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sendgame",
+    "name": "sendGame",
+    "parameters": [
+      {
+        "name": "chat_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "game_short_name",
+        "required": true,
+        "signature": "String"
+      },
+      {
+        "name": "disable_notification",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "reply_to_message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "reply_markup",
+        "required": false,
+        "signature": "InlineKeyboardMarkup"
+      }
+    ],
+    "result_signature": "Message"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#setgamescore",
+    "name": "setGameScore",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "score",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "force",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "disable_edit_message",
+        "required": false,
+        "signature": "Boolean"
+      },
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "Message, TrueClass"
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#getgamehighscores",
+    "name": "getGameHighScores",
+    "parameters": [
+      {
+        "name": "user_id",
+        "required": true,
+        "signature": "Integer"
+      },
+      {
+        "name": "chat_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "message_id",
+        "required": false,
+        "signature": "Integer"
+      },
+      {
+        "name": "inline_message_id",
+        "required": false,
+        "signature": "String"
+      }
+    ],
+    "result_signature": "Array<GameHighScore>"
+  }
+]
