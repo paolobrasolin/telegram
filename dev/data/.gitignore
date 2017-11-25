@@ -1,2 +1,3 @@
 *.fetched.json
 *.parsed.json
+*.prerendered.json
