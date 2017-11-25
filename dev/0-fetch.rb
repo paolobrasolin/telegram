@@ -1,18 +1,25 @@
 # frozen_string_literal: true
 
+# This script fetches the Bot API documentation, roughly parses it
+# and restructures it into an easily consumable YAML file.
+
 require 'nokogiri'
 require 'open-uri'
 require 'yaml'
+require 'json'
 
-# Fetch and parse the API documentation.
+# Fetch and parse the Bot API documentation webpage.
 
+print 'Fetching Bot API documentation webpage... '
 API_DOC_URL = 'https://core.telegram.org/bots/api'
 api_doc_dom = Nokogiri::HTML open(API_DOC_URL)
 api_doc_dom.encoding = 'UTF-8'
+puts "Downloaded #{api_doc_dom.to_html.size} bytes."
 
 # Extract the sections beginning with an H4 from #def_page_content.
 # The result is an array of tag arrays.
 
+print 'Extracting H4 sections... '
 is_gathering = false
 sections = []
 api_doc_dom.xpath("//div[@id='dev_page_content']/*").each do |tag|
@@ -26,9 +33,11 @@ api_doc_dom.xpath("//div[@id='dev_page_content']/*").each do |tag|
     sections.last << tag if is_gathering
   end
 end
+puts "Found #{sections.count} sections."
 
 # Preprocess tag lists to ease classification.
 
+print 'Preprocess extracted sections... '
 sections.map! do |section|
   header = section.shift # safely assumed to be the H4
 
@@ -47,6 +56,7 @@ sections.map! do |section|
     }
   }
 end
+puts 'Done.'
 
 # Classify the sections we found.
 
@@ -55,35 +65,39 @@ types_sections = []
 methods_sections = []
 discarded_sections = []
 
-puts "Scanning #{sections.count} sections..."
+TYPES_BLACKLIST = %w[InputMessageContent InlineQueryResult
+                     CallbackGame InputFile].freeze
+TYPES_REGEXP = /^[A-Z][a-zA-Z0-9]+$/
 
-SKIPPED_TYPES = %w[InputMessageContent InlineQueryResult CallbackGame InputFile].freeze
-SKIPPED_METHODS = %w[].freeze
-TYPE_REGEXP = /^[A-Z][a-zA-Z0-9]+$/
-METHOD_REGEXP = /^[a-z][a-zA-Z0-9]+$/
+METHODS_BLACKLIST = %w[].freeze
+METHODS_REGEXP = /^[a-z][a-zA-Z0-9]+$/
+
+print "Classifying #{sections.count} sections... "
 
 sections.each do |section|
   case section[:title]
-  when *(SKIPPED_TYPES + SKIPPED_METHODS)
+  when *(TYPES_BLACKLIST + METHODS_BLACKLIST)
     skipped_sections << section
-  when TYPE_REGEXP
+  when TYPES_REGEXP
     types_sections << section
-  when METHOD_REGEXP
+  when METHODS_REGEXP
     methods_sections << section
   else
     discarded_sections << section
   end
 end
+puts 'Done! Dumping results to console:'
 
 # Print out the result.
 
-def entab(array, indent: 4, width: 35)
-  # width = array.map(&:length).max + indent
+def entab(array, indent: 4)
+  width = array.map(&:length).max + indent
   fitting_cols = (`tput cols`.to_i - indent).fdiv(width).floor
   rows = array.count.fdiv(fitting_cols).ceil
   tab = array.sort.each_slice(rows).to_a
-  tab[0].zip(*tab[1..-1]). # equalize row sizes
-    map { |r| r.map { |c| c.to_s.ljust width }.join.prepend(' ' * indent) }.join "\n"
+  tab[0].zip(*tab[1..-1]). # <- tricky: this equalizes row sizes
+    map { |r| r.map { |c| c.to_s.ljust width }.join.prepend(' ' * indent) }.
+    join "\n"
 end
 
 puts <<~MESSAGE
@@ -126,8 +140,10 @@ types_sections.each do |section|
   }
 end
 
-file_path = File.join __dir__, 'fetched_types.yaml'
-File.open(file_path, 'w') { |file| file.write api_types.to_yaml }
+print 'Dumping types to file... '
+file_path = File.join __dir__, 'data', 'types.fetched.json'
+File.open(file_path, 'w') { |file| file.write JSON.pretty_generate(api_types) }
+puts "Saved to #{file_path}"
 
 # Minimally clean up and validate methods, then dump them.
 
@@ -163,5 +179,7 @@ methods_sections.each do |section|
   }
 end
 
-file_path = File.join __dir__, 'fetched_methods.yaml'
-File.open(file_path, 'w') { |file| file.write api_methods.to_yaml }
+print 'Dumping methods to file... '
+file_path = File.join __dir__, 'data', 'methods.fetched.json'
+File.open(file_path, 'w') { |file| file.write JSON.pretty_generate(api_methods) }
+puts "Saved to #{file_path}"

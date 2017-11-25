@@ -59,7 +59,7 @@ module Telegram
               (performer&.to_s unless performer.nil?),
               (audio_duration&.to_i unless audio_duration.nil?),
               (Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?),
-              (Types::InputMessageContent.new(**input_message_content.to_h) unless input_message_content.nil?)
+              (input_message_content unless input_message_content.nil?)
             )
           end
         end

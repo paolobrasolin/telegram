@@ -30,6 +30,8 @@ module Telegram
         #   @return [Message, nil]
         # @!attribute [rw] edit_date
         #   @return [Integer, nil]
+        # @!attribute [rw] media_group_id
+        #   @return [String, nil]
         # @!attribute [rw] author_signature
         #   @return [String, nil]
         # @!attribute [rw] text
@@ -100,6 +102,7 @@ module Telegram
           :forward_date,
           :reply_to_message,
           :edit_date,
+          :media_group_id,
           :author_signature,
           :text,
           :entities,
@@ -144,6 +147,7 @@ module Telegram
             forward_date: nil,
             reply_to_message: nil,
             edit_date: nil,
+            media_group_id: nil,
             author_signature: nil,
             text: nil,
             entities: nil,
@@ -186,6 +190,7 @@ module Telegram
               (forward_date&.to_i unless forward_date.nil?),
               (Types::Message.new(**reply_to_message.to_h) unless reply_to_message.nil?),
               (edit_date&.to_i unless edit_date.nil?),
+              (media_group_id&.to_s unless media_group_id.nil?),
               (author_signature&.to_s unless author_signature.nil?),
               (text&.to_s unless text.nil?),
               (entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless entities.nil?),

@@ -1,48 +1,59 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
       module Methods
         # See the {{ "{" }}{{ method.url }} official documentation}.
         #
+{%- for attribute in method.parameters %}
+        # @!attribute [rw] {{ attribute.snake_name }}
+        #   @return [{{ attribute.signature }}]
+{%- endfor %}
 {%- if method.parameters == empty %}
-        def {{ method.snake_name }}
-          Types::Response.new(
-{%- if method.result_caster %}
-            result_caster: {{ method.result_caster -}},{%- endif %}
-            **Client.post(
-              url: build_url('{{ method.camel_name }}'),
-              parameters: {}
-            )
+        {{ method.pascal_name }} = Struct.new(nil) do
+          include Telegram::CoreExt::Struct
+
+          def initialize
+            super
+          end
+{%- else %}
+        {{ method.pascal_name }} = Struct.new(
+        {%- for attribute in method.parameters %}
+          :{{ attribute.snake_name -}}
+          {%- unless attribute == method.parameters.last -%},{%- endunless -%}
+        {%- endfor %}
+        ) do
+          include Telegram::CoreExt::Struct
+
+          def initialize(
+          {%- for attribute in method.parameters %}
+            {{ attribute.snake_name -}}:
+              {%- unless attribute.required %} nil{%- endunless -%}
+              {%- unless attribute == method.parameters.last -%},{%- endunless -%}
+          {%- endfor %}
           )
-        end
-{%- else -%}
-{%- for parameter in method.parameters %}
-        # @param {{parameter.snake_name}} [{{parameter.signature}}]
-{%- endfor %}
-        def {{ method.snake_name }}(
-{%- for parameter in method.parameters %}
-          {{ parameter.snake_name }}:
-            {%- unless parameter.required %} nil{% endunless -%}
-            {%- unless parameter == method.parameters.last %},{% endunless %}
-{%- endfor %}
-        )
-          Types::Response.new(
-{%- if method.result_caster %}
-            result_caster: {{ method.result_caster -}},{%- endif %}
-            **Client.post(
-              url: build_url('{{ method.camel_name }}'),
-              parameters: {
-{%- for parameter in method.parameters %}
-                {{ parameter.snake_name }}: {{ parameter.snake_name -}}
-                {%- unless parameter == method.parameters.last %},{% endunless %}
-{%- endfor %}
-              }
+            super(
+            {%- for attribute in method.parameters %}
+              {{ attribute.caster -}}
+              {%- unless attribute == method.parameters.last -%},{%- endunless %}
+            {%- endfor %}
             )
-          )
-        end
+          end
 {%- endif %}
+
+          def call(client:, token:)
+            Types::Response.new(
+              result_caster: {{ method.result_caster }},
+              **client.post(
+                url: Telegram::API::Bot.build_url(token: token, method: '{{ method.camel_name }}'),
+                parameters: self.to_h
+              )
+            )
+          end
+        end
       end
     end
   end

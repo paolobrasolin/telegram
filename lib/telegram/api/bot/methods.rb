@@ -8,11 +8,18 @@ module Telegram
   module API
     module Bot
       module Methods
-      private
-
-        def build_url(method_name)
-          [::Telegram::API::Bot::URL, "bot#{@token}", method_name].join('/')
+        module Callable
+          def call(client)
+            Types::Response.new(
+              result_caster: self.class::RESULT_CASTER,
+              **client.post(
+                url: build_url(self.class::METHOD_NAME),
+                parameters: self.to_h
+              )
+            )
+          end
         end
+      private
 
         # TODO: save this to a gist - it is pretty neat.
         # def method_parameters_hash(meth, bind)

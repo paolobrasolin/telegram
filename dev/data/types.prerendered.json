@@ -1,0 +1,3217 @@
+[
+  {
+    "url": "https://core.telegram.org/bots/api#update",
+    "snake_name": "update",
+    "pascal_name": "Update",
+    "attributes": [
+      {
+        "snake_name": "update_id",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "update_id&.to_i"
+      },
+      {
+        "snake_name": "message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**message.to_h) unless message.nil?)"
+      },
+      {
+        "snake_name": "edited_message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**edited_message.to_h) unless edited_message.nil?)"
+      },
+      {
+        "snake_name": "channel_post",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**channel_post.to_h) unless channel_post.nil?)"
+      },
+      {
+        "snake_name": "edited_channel_post",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**edited_channel_post.to_h) unless edited_channel_post.nil?)"
+      },
+      {
+        "snake_name": "inline_query",
+        "optional": true,
+        "signature": "InlineQuery, nil",
+        "caster": "(Types::InlineQuery.new(**inline_query.to_h) unless inline_query.nil?)"
+      },
+      {
+        "snake_name": "chosen_inline_result",
+        "optional": true,
+        "signature": "ChosenInlineResult, nil",
+        "caster": "(Types::ChosenInlineResult.new(**chosen_inline_result.to_h) unless chosen_inline_result.nil?)"
+      },
+      {
+        "snake_name": "callback_query",
+        "optional": true,
+        "signature": "CallbackQuery, nil",
+        "caster": "(Types::CallbackQuery.new(**callback_query.to_h) unless callback_query.nil?)"
+      },
+      {
+        "snake_name": "shipping_query",
+        "optional": true,
+        "signature": "ShippingQuery, nil",
+        "caster": "(Types::ShippingQuery.new(**shipping_query.to_h) unless shipping_query.nil?)"
+      },
+      {
+        "snake_name": "pre_checkout_query",
+        "optional": true,
+        "signature": "PreCheckoutQuery, nil",
+        "caster": "(Types::PreCheckoutQuery.new(**pre_checkout_query.to_h) unless pre_checkout_query.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#webhookinfo",
+    "snake_name": "webhook_info",
+    "pascal_name": "WebhookInfo",
+    "attributes": [
+      {
+        "snake_name": "url",
+        "optional": false,
+        "signature": "String",
+        "caster": "url&.to_s"
+      },
+      {
+        "snake_name": "has_custom_certificate",
+        "optional": false,
+        "signature": "Boolean",
+        "caster": "(!!has_custom_certificate unless has_custom_certificate.nil?)"
+      },
+      {
+        "snake_name": "pending_update_count",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "pending_update_count&.to_i"
+      },
+      {
+        "snake_name": "last_error_date",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(last_error_date&.to_i unless last_error_date.nil?)"
+      },
+      {
+        "snake_name": "last_error_message",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_error_message&.to_s unless last_error_message.nil?)"
+      },
+      {
+        "snake_name": "max_connections",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(max_connections&.to_i unless max_connections.nil?)"
+      },
+      {
+        "snake_name": "allowed_updates",
+        "optional": true,
+        "signature": "Array<String>, nil",
+        "caster": "(allowed_updates&.to_a&.map { |o| o&.to_s } unless allowed_updates.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#user",
+    "snake_name": "user",
+    "pascal_name": "User",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "id&.to_i"
+      },
+      {
+        "snake_name": "is_bot",
+        "optional": false,
+        "signature": "Boolean",
+        "caster": "(!!is_bot unless is_bot.nil?)"
+      },
+      {
+        "snake_name": "first_name",
+        "optional": false,
+        "signature": "String",
+        "caster": "first_name&.to_s"
+      },
+      {
+        "snake_name": "last_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_name&.to_s unless last_name.nil?)"
+      },
+      {
+        "snake_name": "username",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(username&.to_s unless username.nil?)"
+      },
+      {
+        "snake_name": "language_code",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(language_code&.to_s unless language_code.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#chat",
+    "snake_name": "chat",
+    "pascal_name": "Chat",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "id&.to_i"
+      },
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "username",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(username&.to_s unless username.nil?)"
+      },
+      {
+        "snake_name": "first_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(first_name&.to_s unless first_name.nil?)"
+      },
+      {
+        "snake_name": "last_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_name&.to_s unless last_name.nil?)"
+      },
+      {
+        "snake_name": "all_members_are_administrators",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!all_members_are_administrators unless all_members_are_administrators.nil?)"
+      },
+      {
+        "snake_name": "photo",
+        "optional": true,
+        "signature": "ChatPhoto, nil",
+        "caster": "(Types::ChatPhoto.new(**photo.to_h) unless photo.nil?)"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "invite_link",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(invite_link&.to_s unless invite_link.nil?)"
+      },
+      {
+        "snake_name": "pinned_message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**pinned_message.to_h) unless pinned_message.nil?)"
+      },
+      {
+        "snake_name": "sticker_set_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(sticker_set_name&.to_s unless sticker_set_name.nil?)"
+      },
+      {
+        "snake_name": "can_set_sticker_set",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_set_sticker_set unless can_set_sticker_set.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#message",
+    "snake_name": "message",
+    "pascal_name": "Message",
+    "attributes": [
+      {
+        "snake_name": "message_id",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "message_id&.to_i"
+      },
+      {
+        "snake_name": "from",
+        "optional": true,
+        "signature": "User, nil",
+        "caster": "(Types::User.new(**from.to_h) unless from.nil?)"
+      },
+      {
+        "snake_name": "date",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "date&.to_i"
+      },
+      {
+        "snake_name": "chat",
+        "optional": false,
+        "signature": "Chat",
+        "caster": "Types::Chat.new(**chat.to_h)"
+      },
+      {
+        "snake_name": "forward_from",
+        "optional": true,
+        "signature": "User, nil",
+        "caster": "(Types::User.new(**forward_from.to_h) unless forward_from.nil?)"
+      },
+      {
+        "snake_name": "forward_from_chat",
+        "optional": true,
+        "signature": "Chat, nil",
+        "caster": "(Types::Chat.new(**forward_from_chat.to_h) unless forward_from_chat.nil?)"
+      },
+      {
+        "snake_name": "forward_from_message_id",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(forward_from_message_id&.to_i unless forward_from_message_id.nil?)"
+      },
+      {
+        "snake_name": "forward_signature",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(forward_signature&.to_s unless forward_signature.nil?)"
+      },
+      {
+        "snake_name": "forward_date",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(forward_date&.to_i unless forward_date.nil?)"
+      },
+      {
+        "snake_name": "reply_to_message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**reply_to_message.to_h) unless reply_to_message.nil?)"
+      },
+      {
+        "snake_name": "edit_date",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(edit_date&.to_i unless edit_date.nil?)"
+      },
+      {
+        "snake_name": "media_group_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(media_group_id&.to_s unless media_group_id.nil?)"
+      },
+      {
+        "snake_name": "author_signature",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(author_signature&.to_s unless author_signature.nil?)"
+      },
+      {
+        "snake_name": "text",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(text&.to_s unless text.nil?)"
+      },
+      {
+        "snake_name": "entities",
+        "optional": true,
+        "signature": "Array<MessageEntity>, nil",
+        "caster": "(entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless entities.nil?)"
+      },
+      {
+        "snake_name": "caption_entities",
+        "optional": true,
+        "signature": "Array<MessageEntity>, nil",
+        "caster": "(caption_entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless caption_entities.nil?)"
+      },
+      {
+        "snake_name": "audio",
+        "optional": true,
+        "signature": "Audio, nil",
+        "caster": "(Types::Audio.new(**audio.to_h) unless audio.nil?)"
+      },
+      {
+        "snake_name": "document",
+        "optional": true,
+        "signature": "Document, nil",
+        "caster": "(Types::Document.new(**document.to_h) unless document.nil?)"
+      },
+      {
+        "snake_name": "game",
+        "optional": true,
+        "signature": "Game, nil",
+        "caster": "(Types::Game.new(**game.to_h) unless game.nil?)"
+      },
+      {
+        "snake_name": "photo",
+        "optional": true,
+        "signature": "Array<PhotoSize>, nil",
+        "caster": "(photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) } unless photo.nil?)"
+      },
+      {
+        "snake_name": "sticker",
+        "optional": true,
+        "signature": "Sticker, nil",
+        "caster": "(Types::Sticker.new(**sticker.to_h) unless sticker.nil?)"
+      },
+      {
+        "snake_name": "video",
+        "optional": true,
+        "signature": "Video, nil",
+        "caster": "(Types::Video.new(**video.to_h) unless video.nil?)"
+      },
+      {
+        "snake_name": "voice",
+        "optional": true,
+        "signature": "Voice, nil",
+        "caster": "(Types::Voice.new(**voice.to_h) unless voice.nil?)"
+      },
+      {
+        "snake_name": "video_note",
+        "optional": true,
+        "signature": "VideoNote, nil",
+        "caster": "(Types::VideoNote.new(**video_note.to_h) unless video_note.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "contact",
+        "optional": true,
+        "signature": "Contact, nil",
+        "caster": "(Types::Contact.new(**contact.to_h) unless contact.nil?)"
+      },
+      {
+        "snake_name": "location",
+        "optional": true,
+        "signature": "Location, nil",
+        "caster": "(Types::Location.new(**location.to_h) unless location.nil?)"
+      },
+      {
+        "snake_name": "venue",
+        "optional": true,
+        "signature": "Venue, nil",
+        "caster": "(Types::Venue.new(**venue.to_h) unless venue.nil?)"
+      },
+      {
+        "snake_name": "new_chat_members",
+        "optional": true,
+        "signature": "Array<User>, nil",
+        "caster": "(new_chat_members&.to_a&.map { |o| Types::User.new(**o.to_h) } unless new_chat_members.nil?)"
+      },
+      {
+        "snake_name": "left_chat_member",
+        "optional": true,
+        "signature": "User, nil",
+        "caster": "(Types::User.new(**left_chat_member.to_h) unless left_chat_member.nil?)"
+      },
+      {
+        "snake_name": "new_chat_title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(new_chat_title&.to_s unless new_chat_title.nil?)"
+      },
+      {
+        "snake_name": "new_chat_photo",
+        "optional": true,
+        "signature": "Array<PhotoSize>, nil",
+        "caster": "(new_chat_photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) } unless new_chat_photo.nil?)"
+      },
+      {
+        "snake_name": "delete_chat_photo",
+        "optional": true,
+        "signature": "TrueClass, nil",
+        "caster": "(!!delete_chat_photo unless delete_chat_photo.nil?)"
+      },
+      {
+        "snake_name": "group_chat_created",
+        "optional": true,
+        "signature": "TrueClass, nil",
+        "caster": "(!!group_chat_created unless group_chat_created.nil?)"
+      },
+      {
+        "snake_name": "supergroup_chat_created",
+        "optional": true,
+        "signature": "TrueClass, nil",
+        "caster": "(!!supergroup_chat_created unless supergroup_chat_created.nil?)"
+      },
+      {
+        "snake_name": "channel_chat_created",
+        "optional": true,
+        "signature": "TrueClass, nil",
+        "caster": "(!!channel_chat_created unless channel_chat_created.nil?)"
+      },
+      {
+        "snake_name": "migrate_to_chat_id",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(migrate_to_chat_id&.to_i unless migrate_to_chat_id.nil?)"
+      },
+      {
+        "snake_name": "migrate_from_chat_id",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(migrate_from_chat_id&.to_i unless migrate_from_chat_id.nil?)"
+      },
+      {
+        "snake_name": "pinned_message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**pinned_message.to_h) unless pinned_message.nil?)"
+      },
+      {
+        "snake_name": "invoice",
+        "optional": true,
+        "signature": "Invoice, nil",
+        "caster": "(Types::Invoice.new(**invoice.to_h) unless invoice.nil?)"
+      },
+      {
+        "snake_name": "successful_payment",
+        "optional": true,
+        "signature": "SuccessfulPayment, nil",
+        "caster": "(Types::SuccessfulPayment.new(**successful_payment.to_h) unless successful_payment.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#messageentity",
+    "snake_name": "message_entity",
+    "pascal_name": "MessageEntity",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "offset",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "offset&.to_i"
+      },
+      {
+        "snake_name": "length",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "length&.to_i"
+      },
+      {
+        "snake_name": "url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(url&.to_s unless url.nil?)"
+      },
+      {
+        "snake_name": "user",
+        "optional": true,
+        "signature": "User, nil",
+        "caster": "(Types::User.new(**user.to_h) unless user.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#photosize",
+    "snake_name": "photo_size",
+    "pascal_name": "PhotoSize",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "width",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "width&.to_i"
+      },
+      {
+        "snake_name": "height",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "height&.to_i"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#audio",
+    "snake_name": "audio",
+    "pascal_name": "Audio",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "duration",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "duration&.to_i"
+      },
+      {
+        "snake_name": "performer",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(performer&.to_s unless performer.nil?)"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(mime_type&.to_s unless mime_type.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#document",
+    "snake_name": "document",
+    "pascal_name": "Document",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "thumb",
+        "optional": true,
+        "signature": "PhotoSize, nil",
+        "caster": "(Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?)"
+      },
+      {
+        "snake_name": "file_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(file_name&.to_s unless file_name.nil?)"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(mime_type&.to_s unless mime_type.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#video",
+    "snake_name": "video",
+    "pascal_name": "Video",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "width",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "width&.to_i"
+      },
+      {
+        "snake_name": "height",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "height&.to_i"
+      },
+      {
+        "snake_name": "duration",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "duration&.to_i"
+      },
+      {
+        "snake_name": "thumb",
+        "optional": true,
+        "signature": "PhotoSize, nil",
+        "caster": "(Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?)"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(mime_type&.to_s unless mime_type.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#voice",
+    "snake_name": "voice",
+    "pascal_name": "Voice",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "duration",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "duration&.to_i"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(mime_type&.to_s unless mime_type.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#videonote",
+    "snake_name": "video_note",
+    "pascal_name": "VideoNote",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "length",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "length&.to_i"
+      },
+      {
+        "snake_name": "duration",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "duration&.to_i"
+      },
+      {
+        "snake_name": "thumb",
+        "optional": true,
+        "signature": "PhotoSize, nil",
+        "caster": "(Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#contact",
+    "snake_name": "contact",
+    "pascal_name": "Contact",
+    "attributes": [
+      {
+        "snake_name": "phone_number",
+        "optional": false,
+        "signature": "String",
+        "caster": "phone_number&.to_s"
+      },
+      {
+        "snake_name": "first_name",
+        "optional": false,
+        "signature": "String",
+        "caster": "first_name&.to_s"
+      },
+      {
+        "snake_name": "last_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_name&.to_s unless last_name.nil?)"
+      },
+      {
+        "snake_name": "user_id",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(user_id&.to_i unless user_id.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#location",
+    "snake_name": "location",
+    "pascal_name": "Location",
+    "attributes": [
+      {
+        "snake_name": "longitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "longitude&.to_f"
+      },
+      {
+        "snake_name": "latitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "latitude&.to_f"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#venue",
+    "snake_name": "venue",
+    "pascal_name": "Venue",
+    "attributes": [
+      {
+        "snake_name": "location",
+        "optional": false,
+        "signature": "Location",
+        "caster": "Types::Location.new(**location.to_h)"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "address",
+        "optional": false,
+        "signature": "String",
+        "caster": "address&.to_s"
+      },
+      {
+        "snake_name": "foursquare_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(foursquare_id&.to_s unless foursquare_id.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#userprofilephotos",
+    "snake_name": "user_profile_photos",
+    "pascal_name": "UserProfilePhotos",
+    "attributes": [
+      {
+        "snake_name": "total_count",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "total_count&.to_i"
+      },
+      {
+        "snake_name": "photos",
+        "optional": false,
+        "signature": "Array<Array<PhotoSize>>",
+        "caster": "photos&.to_a&.map { |a| a.to_a.map { |o| Types::PhotoSize.new(**o.to_h) } }"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#file",
+    "snake_name": "file",
+    "pascal_name": "File",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      },
+      {
+        "snake_name": "file_path",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(file_path&.to_s unless file_path.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#replykeyboardmarkup",
+    "snake_name": "reply_keyboard_markup",
+    "pascal_name": "ReplyKeyboardMarkup",
+    "attributes": [
+      {
+        "snake_name": "keyboard",
+        "optional": false,
+        "signature": "Array<Array<KeyboardButton>>",
+        "caster": "keyboard&.to_a&.map { |a| a.to_a.map { |o| Types::KeyboardButton.new(**o.to_h) } }"
+      },
+      {
+        "snake_name": "resize_keyboard",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!resize_keyboard unless resize_keyboard.nil?)"
+      },
+      {
+        "snake_name": "one_time_keyboard",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!one_time_keyboard unless one_time_keyboard.nil?)"
+      },
+      {
+        "snake_name": "selective",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!selective unless selective.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#keyboardbutton",
+    "snake_name": "keyboard_button",
+    "pascal_name": "KeyboardButton",
+    "attributes": [
+      {
+        "snake_name": "text",
+        "optional": false,
+        "signature": "String",
+        "caster": "text&.to_s"
+      },
+      {
+        "snake_name": "request_contact",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!request_contact unless request_contact.nil?)"
+      },
+      {
+        "snake_name": "request_location",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!request_location unless request_location.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#replykeyboardremove",
+    "snake_name": "reply_keyboard_remove",
+    "pascal_name": "ReplyKeyboardRemove",
+    "attributes": [
+      {
+        "snake_name": "remove_keyboard",
+        "optional": false,
+        "signature": "TrueClass",
+        "caster": "(!!remove_keyboard unless remove_keyboard.nil?)"
+      },
+      {
+        "snake_name": "selective",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!selective unless selective.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinekeyboardmarkup",
+    "snake_name": "inline_keyboard_markup",
+    "pascal_name": "InlineKeyboardMarkup",
+    "attributes": [
+      {
+        "snake_name": "inline_keyboard",
+        "optional": false,
+        "signature": "Array<Array<InlineKeyboardButton>>",
+        "caster": "inline_keyboard&.to_a&.map { |a| a.to_a.map { |o| Types::InlineKeyboardButton.new(**o.to_h) } }"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinekeyboardbutton",
+    "snake_name": "inline_keyboard_button",
+    "pascal_name": "InlineKeyboardButton",
+    "attributes": [
+      {
+        "snake_name": "text",
+        "optional": false,
+        "signature": "String",
+        "caster": "text&.to_s"
+      },
+      {
+        "snake_name": "url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(url&.to_s unless url.nil?)"
+      },
+      {
+        "snake_name": "callback_data",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(callback_data&.to_s unless callback_data.nil?)"
+      },
+      {
+        "snake_name": "switch_inline_query",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(switch_inline_query&.to_s unless switch_inline_query.nil?)"
+      },
+      {
+        "snake_name": "switch_inline_query_current_chat",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(switch_inline_query_current_chat&.to_s unless switch_inline_query_current_chat.nil?)"
+      },
+      {
+        "snake_name": "callback_game",
+        "optional": true,
+        "signature": "CallbackGame, nil",
+        "caster": "(Types::CallbackGame.new(**callback_game.to_h) unless callback_game.nil?)"
+      },
+      {
+        "snake_name": "pay",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!pay unless pay.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#callbackquery",
+    "snake_name": "callback_query",
+    "pascal_name": "CallbackQuery",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "from",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**from.to_h)"
+      },
+      {
+        "snake_name": "message",
+        "optional": true,
+        "signature": "Message, nil",
+        "caster": "(Types::Message.new(**message.to_h) unless message.nil?)"
+      },
+      {
+        "snake_name": "inline_message_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(inline_message_id&.to_s unless inline_message_id.nil?)"
+      },
+      {
+        "snake_name": "chat_instance",
+        "optional": false,
+        "signature": "String",
+        "caster": "chat_instance&.to_s"
+      },
+      {
+        "snake_name": "data",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(data&.to_s unless data.nil?)"
+      },
+      {
+        "snake_name": "game_short_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(game_short_name&.to_s unless game_short_name.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#forcereply",
+    "snake_name": "force_reply",
+    "pascal_name": "ForceReply",
+    "attributes": [
+      {
+        "snake_name": "force_reply",
+        "optional": false,
+        "signature": "TrueClass",
+        "caster": "(!!force_reply unless force_reply.nil?)"
+      },
+      {
+        "snake_name": "selective",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!selective unless selective.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#chatphoto",
+    "snake_name": "chat_photo",
+    "pascal_name": "ChatPhoto",
+    "attributes": [
+      {
+        "snake_name": "small_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "small_file_id&.to_s"
+      },
+      {
+        "snake_name": "big_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "big_file_id&.to_s"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#chatmember",
+    "snake_name": "chat_member",
+    "pascal_name": "ChatMember",
+    "attributes": [
+      {
+        "snake_name": "user",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**user.to_h)"
+      },
+      {
+        "snake_name": "status",
+        "optional": false,
+        "signature": "String",
+        "caster": "status&.to_s"
+      },
+      {
+        "snake_name": "until_date",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(until_date&.to_i unless until_date.nil?)"
+      },
+      {
+        "snake_name": "can_be_edited",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_be_edited unless can_be_edited.nil?)"
+      },
+      {
+        "snake_name": "can_change_info",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_change_info unless can_change_info.nil?)"
+      },
+      {
+        "snake_name": "can_post_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_post_messages unless can_post_messages.nil?)"
+      },
+      {
+        "snake_name": "can_edit_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_edit_messages unless can_edit_messages.nil?)"
+      },
+      {
+        "snake_name": "can_delete_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_delete_messages unless can_delete_messages.nil?)"
+      },
+      {
+        "snake_name": "can_invite_users",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_invite_users unless can_invite_users.nil?)"
+      },
+      {
+        "snake_name": "can_restrict_members",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_restrict_members unless can_restrict_members.nil?)"
+      },
+      {
+        "snake_name": "can_pin_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_pin_messages unless can_pin_messages.nil?)"
+      },
+      {
+        "snake_name": "can_promote_members",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_promote_members unless can_promote_members.nil?)"
+      },
+      {
+        "snake_name": "can_send_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_send_messages unless can_send_messages.nil?)"
+      },
+      {
+        "snake_name": "can_send_media_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_send_media_messages unless can_send_media_messages.nil?)"
+      },
+      {
+        "snake_name": "can_send_other_messages",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_send_other_messages unless can_send_other_messages.nil?)"
+      },
+      {
+        "snake_name": "can_add_web_page_previews",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!can_add_web_page_previews unless can_add_web_page_previews.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#responseparameters",
+    "snake_name": "response_parameters",
+    "pascal_name": "ResponseParameters",
+    "attributes": [
+      {
+        "snake_name": "migrate_to_chat_id",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(migrate_to_chat_id&.to_i unless migrate_to_chat_id.nil?)"
+      },
+      {
+        "snake_name": "retry_after",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(retry_after&.to_i unless retry_after.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputmedia",
+    "snake_name": "input_media",
+    "pascal_name": "InputMedia",
+    "attributes": [
+
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputmediaphoto",
+    "snake_name": "input_media_photo",
+    "pascal_name": "InputMediaPhoto",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "media",
+        "optional": false,
+        "signature": "String",
+        "caster": "media&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputmediavideo",
+    "snake_name": "input_media_video",
+    "pascal_name": "InputMediaVideo",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "media",
+        "optional": false,
+        "signature": "String",
+        "caster": "media&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(width&.to_i unless width.nil?)"
+      },
+      {
+        "snake_name": "height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(height&.to_i unless height.nil?)"
+      },
+      {
+        "snake_name": "duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(duration&.to_i unless duration.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#sticker",
+    "snake_name": "sticker",
+    "pascal_name": "Sticker",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "width",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "width&.to_i"
+      },
+      {
+        "snake_name": "height",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "height&.to_i"
+      },
+      {
+        "snake_name": "thumb",
+        "optional": true,
+        "signature": "PhotoSize, nil",
+        "caster": "(Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?)"
+      },
+      {
+        "snake_name": "emoji",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(emoji&.to_s unless emoji.nil?)"
+      },
+      {
+        "snake_name": "set_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(set_name&.to_s unless set_name.nil?)"
+      },
+      {
+        "snake_name": "mask_position",
+        "optional": true,
+        "signature": "MaskPosition, nil",
+        "caster": "(Types::MaskPosition.new(**mask_position.to_h) unless mask_position.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#stickerset",
+    "snake_name": "sticker_set",
+    "pascal_name": "StickerSet",
+    "attributes": [
+      {
+        "snake_name": "name",
+        "optional": false,
+        "signature": "String",
+        "caster": "name&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "contains_masks",
+        "optional": false,
+        "signature": "Boolean",
+        "caster": "(!!contains_masks unless contains_masks.nil?)"
+      },
+      {
+        "snake_name": "stickers",
+        "optional": false,
+        "signature": "Array<Sticker>",
+        "caster": "stickers&.to_a&.map { |o| Types::Sticker.new(**o.to_h) }"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#maskposition",
+    "snake_name": "mask_position",
+    "pascal_name": "MaskPosition",
+    "attributes": [
+      {
+        "snake_name": "point",
+        "optional": false,
+        "signature": "String",
+        "caster": "point&.to_s"
+      },
+      {
+        "snake_name": "x_shift",
+        "optional": false,
+        "signature": "Float",
+        "caster": "x_shift&.to_f"
+      },
+      {
+        "snake_name": "y_shift",
+        "optional": false,
+        "signature": "Float",
+        "caster": "y_shift&.to_f"
+      },
+      {
+        "snake_name": "scale",
+        "optional": false,
+        "signature": "Float",
+        "caster": "scale&.to_f"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequery",
+    "snake_name": "inline_query",
+    "pascal_name": "InlineQuery",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "from",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**from.to_h)"
+      },
+      {
+        "snake_name": "location",
+        "optional": true,
+        "signature": "Location, nil",
+        "caster": "(Types::Location.new(**location.to_h) unless location.nil?)"
+      },
+      {
+        "snake_name": "query",
+        "optional": false,
+        "signature": "String",
+        "caster": "query&.to_s"
+      },
+      {
+        "snake_name": "offset",
+        "optional": false,
+        "signature": "String",
+        "caster": "offset&.to_s"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultarticle",
+    "snake_name": "inline_query_result_article",
+    "pascal_name": "InlineQueryResultArticle",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": false,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent",
+        "caster": "input_message_content"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(url&.to_s unless url.nil?)"
+      },
+      {
+        "snake_name": "hide_url",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!hide_url unless hide_url.nil?)"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(thumb_url&.to_s unless thumb_url.nil?)"
+      },
+      {
+        "snake_name": "thumb_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_width&.to_i unless thumb_width.nil?)"
+      },
+      {
+        "snake_name": "thumb_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_height&.to_i unless thumb_height.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultphoto",
+    "snake_name": "inline_query_result_photo",
+    "pascal_name": "InlineQueryResultPhoto",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "photo_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "photo_url&.to_s"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "thumb_url&.to_s"
+      },
+      {
+        "snake_name": "photo_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(photo_width&.to_i unless photo_width.nil?)"
+      },
+      {
+        "snake_name": "photo_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(photo_height&.to_i unless photo_height.nil?)"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultgif",
+    "snake_name": "inline_query_result_gif",
+    "pascal_name": "InlineQueryResultGif",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "gif_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "gif_url&.to_s"
+      },
+      {
+        "snake_name": "gif_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(gif_width&.to_i unless gif_width.nil?)"
+      },
+      {
+        "snake_name": "gif_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(gif_height&.to_i unless gif_height.nil?)"
+      },
+      {
+        "snake_name": "gif_duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(gif_duration&.to_i unless gif_duration.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "thumb_url&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif",
+    "snake_name": "inline_query_result_mpeg4_gif",
+    "pascal_name": "InlineQueryResultMpeg4Gif",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "mpeg4_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "mpeg4_url&.to_s"
+      },
+      {
+        "snake_name": "mpeg4_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(mpeg4_width&.to_i unless mpeg4_width.nil?)"
+      },
+      {
+        "snake_name": "mpeg4_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(mpeg4_height&.to_i unless mpeg4_height.nil?)"
+      },
+      {
+        "snake_name": "mpeg4_duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(mpeg4_duration&.to_i unless mpeg4_duration.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "thumb_url&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultvideo",
+    "snake_name": "inline_query_result_video",
+    "pascal_name": "InlineQueryResultVideo",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "video_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "video_url&.to_s"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": false,
+        "signature": "String",
+        "caster": "mime_type&.to_s"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "thumb_url&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "video_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(video_width&.to_i unless video_width.nil?)"
+      },
+      {
+        "snake_name": "video_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(video_height&.to_i unless video_height.nil?)"
+      },
+      {
+        "snake_name": "video_duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(video_duration&.to_i unless video_duration.nil?)"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultaudio",
+    "snake_name": "inline_query_result_audio",
+    "pascal_name": "InlineQueryResultAudio",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "audio_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "audio_url&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "performer",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(performer&.to_s unless performer.nil?)"
+      },
+      {
+        "snake_name": "audio_duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(audio_duration&.to_i unless audio_duration.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultvoice",
+    "snake_name": "inline_query_result_voice",
+    "pascal_name": "InlineQueryResultVoice",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "voice_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "voice_url&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "voice_duration",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(voice_duration&.to_i unless voice_duration.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultdocument",
+    "snake_name": "inline_query_result_document",
+    "pascal_name": "InlineQueryResultDocument",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "document_url",
+        "optional": false,
+        "signature": "String",
+        "caster": "document_url&.to_s"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": false,
+        "signature": "String",
+        "caster": "mime_type&.to_s"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(thumb_url&.to_s unless thumb_url.nil?)"
+      },
+      {
+        "snake_name": "thumb_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_width&.to_i unless thumb_width.nil?)"
+      },
+      {
+        "snake_name": "thumb_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_height&.to_i unless thumb_height.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultlocation",
+    "snake_name": "inline_query_result_location",
+    "pascal_name": "InlineQueryResultLocation",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "latitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "latitude&.to_f"
+      },
+      {
+        "snake_name": "longitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "longitude&.to_f"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "live_period",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(live_period&.to_i unless live_period.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(thumb_url&.to_s unless thumb_url.nil?)"
+      },
+      {
+        "snake_name": "thumb_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_width&.to_i unless thumb_width.nil?)"
+      },
+      {
+        "snake_name": "thumb_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_height&.to_i unless thumb_height.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultvenue",
+    "snake_name": "inline_query_result_venue",
+    "pascal_name": "InlineQueryResultVenue",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "latitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "latitude&.to_f"
+      },
+      {
+        "snake_name": "longitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "longitude&.to_f"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "address",
+        "optional": false,
+        "signature": "String",
+        "caster": "address&.to_s"
+      },
+      {
+        "snake_name": "foursquare_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(foursquare_id&.to_s unless foursquare_id.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(thumb_url&.to_s unless thumb_url.nil?)"
+      },
+      {
+        "snake_name": "thumb_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_width&.to_i unless thumb_width.nil?)"
+      },
+      {
+        "snake_name": "thumb_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_height&.to_i unless thumb_height.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcontact",
+    "snake_name": "inline_query_result_contact",
+    "pascal_name": "InlineQueryResultContact",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "phone_number",
+        "optional": false,
+        "signature": "String",
+        "caster": "phone_number&.to_s"
+      },
+      {
+        "snake_name": "first_name",
+        "optional": false,
+        "signature": "String",
+        "caster": "first_name&.to_s"
+      },
+      {
+        "snake_name": "last_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_name&.to_s unless last_name.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      },
+      {
+        "snake_name": "thumb_url",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(thumb_url&.to_s unless thumb_url.nil?)"
+      },
+      {
+        "snake_name": "thumb_width",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_width&.to_i unless thumb_width.nil?)"
+      },
+      {
+        "snake_name": "thumb_height",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(thumb_height&.to_i unless thumb_height.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultgame",
+    "snake_name": "inline_query_result_game",
+    "pascal_name": "InlineQueryResultGame",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "game_short_name",
+        "optional": false,
+        "signature": "String",
+        "caster": "game_short_name&.to_s"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedphoto",
+    "snake_name": "inline_query_result_cached_photo",
+    "pascal_name": "InlineQueryResultCachedPhoto",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "photo_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "photo_file_id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedgif",
+    "snake_name": "inline_query_result_cached_gif",
+    "pascal_name": "InlineQueryResultCachedGif",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "gif_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "gif_file_id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif",
+    "snake_name": "inline_query_result_cached_mpeg4_gif",
+    "pascal_name": "InlineQueryResultCachedMpeg4Gif",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "mpeg4_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "mpeg4_file_id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(title&.to_s unless title.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedsticker",
+    "snake_name": "inline_query_result_cached_sticker",
+    "pascal_name": "InlineQueryResultCachedSticker",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "sticker_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "sticker_file_id&.to_s"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcacheddocument",
+    "snake_name": "inline_query_result_cached_document",
+    "pascal_name": "InlineQueryResultCachedDocument",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "document_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "document_file_id&.to_s"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedvideo",
+    "snake_name": "inline_query_result_cached_video",
+    "pascal_name": "InlineQueryResultCachedVideo",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "video_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "video_file_id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "description",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(description&.to_s unless description.nil?)"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedvoice",
+    "snake_name": "inline_query_result_cached_voice",
+    "pascal_name": "InlineQueryResultCachedVoice",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "voice_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "voice_file_id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inlinequeryresultcachedaudio",
+    "snake_name": "inline_query_result_cached_audio",
+    "pascal_name": "InlineQueryResultCachedAudio",
+    "attributes": [
+      {
+        "snake_name": "type",
+        "optional": false,
+        "signature": "String",
+        "caster": "type&.to_s"
+      },
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "audio_file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "audio_file_id&.to_s"
+      },
+      {
+        "snake_name": "caption",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(caption&.to_s unless caption.nil?)"
+      },
+      {
+        "snake_name": "reply_markup",
+        "optional": true,
+        "signature": "InlineKeyboardMarkup, nil",
+        "caster": "(Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?)"
+      },
+      {
+        "snake_name": "input_message_content",
+        "optional": true,
+        "signature": "InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, nil",
+        "caster": "(input_message_content unless input_message_content.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputtextmessagecontent",
+    "snake_name": "input_text_message_content",
+    "pascal_name": "InputTextMessageContent",
+    "attributes": [
+      {
+        "snake_name": "message_text",
+        "optional": false,
+        "signature": "String",
+        "caster": "message_text&.to_s"
+      },
+      {
+        "snake_name": "parse_mode",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(parse_mode&.to_s unless parse_mode.nil?)"
+      },
+      {
+        "snake_name": "disable_web_page_preview",
+        "optional": true,
+        "signature": "Boolean, nil",
+        "caster": "(!!disable_web_page_preview unless disable_web_page_preview.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputlocationmessagecontent",
+    "snake_name": "input_location_message_content",
+    "pascal_name": "InputLocationMessageContent",
+    "attributes": [
+      {
+        "snake_name": "latitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "latitude&.to_f"
+      },
+      {
+        "snake_name": "longitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "longitude&.to_f"
+      },
+      {
+        "snake_name": "live_period",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(live_period&.to_i unless live_period.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputvenuemessagecontent",
+    "snake_name": "input_venue_message_content",
+    "pascal_name": "InputVenueMessageContent",
+    "attributes": [
+      {
+        "snake_name": "latitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "latitude&.to_f"
+      },
+      {
+        "snake_name": "longitude",
+        "optional": false,
+        "signature": "Float",
+        "caster": "longitude&.to_f"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "address",
+        "optional": false,
+        "signature": "String",
+        "caster": "address&.to_s"
+      },
+      {
+        "snake_name": "foursquare_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(foursquare_id&.to_s unless foursquare_id.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#inputcontactmessagecontent",
+    "snake_name": "input_contact_message_content",
+    "pascal_name": "InputContactMessageContent",
+    "attributes": [
+      {
+        "snake_name": "phone_number",
+        "optional": false,
+        "signature": "String",
+        "caster": "phone_number&.to_s"
+      },
+      {
+        "snake_name": "first_name",
+        "optional": false,
+        "signature": "String",
+        "caster": "first_name&.to_s"
+      },
+      {
+        "snake_name": "last_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(last_name&.to_s unless last_name.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#choseninlineresult",
+    "snake_name": "chosen_inline_result",
+    "pascal_name": "ChosenInlineResult",
+    "attributes": [
+      {
+        "snake_name": "result_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "result_id&.to_s"
+      },
+      {
+        "snake_name": "from",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**from.to_h)"
+      },
+      {
+        "snake_name": "location",
+        "optional": true,
+        "signature": "Location, nil",
+        "caster": "(Types::Location.new(**location.to_h) unless location.nil?)"
+      },
+      {
+        "snake_name": "inline_message_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(inline_message_id&.to_s unless inline_message_id.nil?)"
+      },
+      {
+        "snake_name": "query",
+        "optional": false,
+        "signature": "String",
+        "caster": "query&.to_s"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#labeledprice",
+    "snake_name": "labeled_price",
+    "pascal_name": "LabeledPrice",
+    "attributes": [
+      {
+        "snake_name": "label",
+        "optional": false,
+        "signature": "String",
+        "caster": "label&.to_s"
+      },
+      {
+        "snake_name": "amount",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "amount&.to_i"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#invoice",
+    "snake_name": "invoice",
+    "pascal_name": "Invoice",
+    "attributes": [
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "description",
+        "optional": false,
+        "signature": "String",
+        "caster": "description&.to_s"
+      },
+      {
+        "snake_name": "start_parameter",
+        "optional": false,
+        "signature": "String",
+        "caster": "start_parameter&.to_s"
+      },
+      {
+        "snake_name": "currency",
+        "optional": false,
+        "signature": "String",
+        "caster": "currency&.to_s"
+      },
+      {
+        "snake_name": "total_amount",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "total_amount&.to_i"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#shippingaddress",
+    "snake_name": "shipping_address",
+    "pascal_name": "ShippingAddress",
+    "attributes": [
+      {
+        "snake_name": "country_code",
+        "optional": false,
+        "signature": "String",
+        "caster": "country_code&.to_s"
+      },
+      {
+        "snake_name": "state",
+        "optional": false,
+        "signature": "String",
+        "caster": "state&.to_s"
+      },
+      {
+        "snake_name": "city",
+        "optional": false,
+        "signature": "String",
+        "caster": "city&.to_s"
+      },
+      {
+        "snake_name": "street_line1",
+        "optional": false,
+        "signature": "String",
+        "caster": "street_line1&.to_s"
+      },
+      {
+        "snake_name": "street_line2",
+        "optional": false,
+        "signature": "String",
+        "caster": "street_line2&.to_s"
+      },
+      {
+        "snake_name": "post_code",
+        "optional": false,
+        "signature": "String",
+        "caster": "post_code&.to_s"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#orderinfo",
+    "snake_name": "order_info",
+    "pascal_name": "OrderInfo",
+    "attributes": [
+      {
+        "snake_name": "name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(name&.to_s unless name.nil?)"
+      },
+      {
+        "snake_name": "phone_number",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(phone_number&.to_s unless phone_number.nil?)"
+      },
+      {
+        "snake_name": "email",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(email&.to_s unless email.nil?)"
+      },
+      {
+        "snake_name": "shipping_address",
+        "optional": true,
+        "signature": "ShippingAddress, nil",
+        "caster": "(Types::ShippingAddress.new(**shipping_address.to_h) unless shipping_address.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#shippingoption",
+    "snake_name": "shipping_option",
+    "pascal_name": "ShippingOption",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "prices",
+        "optional": false,
+        "signature": "Array<LabeledPrice>",
+        "caster": "prices&.to_a&.map { |o| Types::LabeledPrice.new(**o.to_h) }"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#successfulpayment",
+    "snake_name": "successful_payment",
+    "pascal_name": "SuccessfulPayment",
+    "attributes": [
+      {
+        "snake_name": "currency",
+        "optional": false,
+        "signature": "String",
+        "caster": "currency&.to_s"
+      },
+      {
+        "snake_name": "total_amount",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "total_amount&.to_i"
+      },
+      {
+        "snake_name": "invoice_payload",
+        "optional": false,
+        "signature": "String",
+        "caster": "invoice_payload&.to_s"
+      },
+      {
+        "snake_name": "shipping_option_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(shipping_option_id&.to_s unless shipping_option_id.nil?)"
+      },
+      {
+        "snake_name": "order_info",
+        "optional": true,
+        "signature": "OrderInfo, nil",
+        "caster": "(Types::OrderInfo.new(**order_info.to_h) unless order_info.nil?)"
+      },
+      {
+        "snake_name": "telegram_payment_charge_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "telegram_payment_charge_id&.to_s"
+      },
+      {
+        "snake_name": "provider_payment_charge_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "provider_payment_charge_id&.to_s"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#shippingquery",
+    "snake_name": "shipping_query",
+    "pascal_name": "ShippingQuery",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "from",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**from.to_h)"
+      },
+      {
+        "snake_name": "invoice_payload",
+        "optional": false,
+        "signature": "String",
+        "caster": "invoice_payload&.to_s"
+      },
+      {
+        "snake_name": "shipping_address",
+        "optional": false,
+        "signature": "ShippingAddress",
+        "caster": "Types::ShippingAddress.new(**shipping_address.to_h)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#precheckoutquery",
+    "snake_name": "pre_checkout_query",
+    "pascal_name": "PreCheckoutQuery",
+    "attributes": [
+      {
+        "snake_name": "id",
+        "optional": false,
+        "signature": "String",
+        "caster": "id&.to_s"
+      },
+      {
+        "snake_name": "from",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**from.to_h)"
+      },
+      {
+        "snake_name": "currency",
+        "optional": false,
+        "signature": "String",
+        "caster": "currency&.to_s"
+      },
+      {
+        "snake_name": "total_amount",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "total_amount&.to_i"
+      },
+      {
+        "snake_name": "invoice_payload",
+        "optional": false,
+        "signature": "String",
+        "caster": "invoice_payload&.to_s"
+      },
+      {
+        "snake_name": "shipping_option_id",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(shipping_option_id&.to_s unless shipping_option_id.nil?)"
+      },
+      {
+        "snake_name": "order_info",
+        "optional": true,
+        "signature": "OrderInfo, nil",
+        "caster": "(Types::OrderInfo.new(**order_info.to_h) unless order_info.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#game",
+    "snake_name": "game",
+    "pascal_name": "Game",
+    "attributes": [
+      {
+        "snake_name": "title",
+        "optional": false,
+        "signature": "String",
+        "caster": "title&.to_s"
+      },
+      {
+        "snake_name": "description",
+        "optional": false,
+        "signature": "String",
+        "caster": "description&.to_s"
+      },
+      {
+        "snake_name": "photo",
+        "optional": false,
+        "signature": "Array<PhotoSize>",
+        "caster": "photo&.to_a&.map { |o| Types::PhotoSize.new(**o.to_h) }"
+      },
+      {
+        "snake_name": "text",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(text&.to_s unless text.nil?)"
+      },
+      {
+        "snake_name": "text_entities",
+        "optional": true,
+        "signature": "Array<MessageEntity>, nil",
+        "caster": "(text_entities&.to_a&.map { |o| Types::MessageEntity.new(**o.to_h) } unless text_entities.nil?)"
+      },
+      {
+        "snake_name": "animation",
+        "optional": true,
+        "signature": "Animation, nil",
+        "caster": "(Types::Animation.new(**animation.to_h) unless animation.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#animation",
+    "snake_name": "animation",
+    "pascal_name": "Animation",
+    "attributes": [
+      {
+        "snake_name": "file_id",
+        "optional": false,
+        "signature": "String",
+        "caster": "file_id&.to_s"
+      },
+      {
+        "snake_name": "thumb",
+        "optional": true,
+        "signature": "PhotoSize, nil",
+        "caster": "(Types::PhotoSize.new(**thumb.to_h) unless thumb.nil?)"
+      },
+      {
+        "snake_name": "file_name",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(file_name&.to_s unless file_name.nil?)"
+      },
+      {
+        "snake_name": "mime_type",
+        "optional": true,
+        "signature": "String, nil",
+        "caster": "(mime_type&.to_s unless mime_type.nil?)"
+      },
+      {
+        "snake_name": "file_size",
+        "optional": true,
+        "signature": "Integer, nil",
+        "caster": "(file_size&.to_i unless file_size.nil?)"
+      }
+    ]
+  },
+  {
+    "url": "https://core.telegram.org/bots/api#gamehighscore",
+    "snake_name": "game_high_score",
+    "pascal_name": "GameHighScore",
+    "attributes": [
+      {
+        "snake_name": "position",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "position&.to_i"
+      },
+      {
+        "snake_name": "user",
+        "optional": false,
+        "signature": "User",
+        "caster": "Types::User.new(**user.to_h)"
+      },
+      {
+        "snake_name": "score",
+        "optional": false,
+        "signature": "Integer",
+        "caster": "score&.to_i"
+      }
+    ]
+  }
+]

@@ -1,0 +1,60 @@
+---
+addStickerToSet: 'True'
+answerCallbackQuery: 'True'
+answerInlineQuery: 'True'
+answerPreCheckoutQuery: 'True'
+answerShippingQuery: 'True'
+createNewStickerSet: 'True'
+deleteChatPhoto: 'True'
+deleteChatStickerSet: 'True'
+deleteMessage: 'True'
+deleteStickerFromSet: 'True'
+deleteWebhook: 'True'
+editMessageCaption: Message or True
+editMessageLiveLocation: Message or True
+editMessageReplyMarkup: Message or True
+editMessageText: Message or True
+exportChatInviteLink: String
+forwardMessage: Message
+getChat: Chat
+getChatAdministrators: Array of ChatMember
+getChatMember: ChatMember
+getChatMembersCount: Int
+getFile: File
+getGameHighScores: Array of GameHighScore
+getMe: User
+getStickerSet: StickerSet
+getUpdates: Array of Update
+getUserProfilePhotos: UserProfilePhotos
+getWebhookInfo: WebhookInfo
+kickChatMember: 'True'
+leaveChat: 'True'
+pinChatMessage: 'True'
+promoteChatMember: 'True'
+restrictChatMember: 'True'
+sendAudio: Message
+sendChatAction: 'True'
+sendContact: Message
+sendDocument: Message
+sendGame: Message
+sendInvoice: Message
+sendLocation: Message
+sendMediaGroup: Array of Message
+sendMessage: Message
+sendPhoto: Message
+sendSticker: Message
+sendVenue: Message
+sendVideo: Message
+sendVideoNote: Message
+sendVoice: Message
+setChatDescription: 'True'
+setChatPhoto: 'True'
+setChatStickerSet: 'True'
+setChatTitle: 'True'
+setGameScore: Message or True
+setStickerPositionInSet: 'True'
+setWebhook: 'True'
+stopMessageLiveLocation: Message or True
+unbanChatMember: 'True'
+unpinChatMessage: 'True'
+uploadStickerFile: File

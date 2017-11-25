@@ -1,50 +1,82 @@
 # frozen_string_literal: true
 
+require 'telegram/core_ext'
+
 module Telegram
   module API
     module Bot
       module Methods
         # See the {https://core.telegram.org/bots/api#promotechatmember official documentation}.
         #
-        # @param chat_id [Integer, String]
-        # @param user_id [Integer]
-        # @param can_change_info [Boolean, nil]
-        # @param can_post_messages [Boolean, nil]
-        # @param can_edit_messages [Boolean, nil]
-        # @param can_delete_messages [Boolean, nil]
-        # @param can_invite_users [Boolean, nil]
-        # @param can_restrict_members [Boolean, nil]
-        # @param can_pin_messages [Boolean, nil]
-        # @param can_promote_members [Boolean, nil]
-        def promote_chat_member(
-          chat_id:,
-          user_id:,
-          can_change_info: nil,
-          can_post_messages: nil,
-          can_edit_messages: nil,
-          can_delete_messages: nil,
-          can_invite_users: nil,
-          can_restrict_members: nil,
-          can_pin_messages: nil,
-          can_promote_members: nil
-        )
-          Types::Response.new(
-            **Client.post(
-              url: build_url('promoteChatMember'),
-              parameters: {
-                chat_id: chat_id,
-                user_id: user_id,
-                can_change_info: can_change_info,
-                can_post_messages: can_post_messages,
-                can_edit_messages: can_edit_messages,
-                can_delete_messages: can_delete_messages,
-                can_invite_users: can_invite_users,
-                can_restrict_members: can_restrict_members,
-                can_pin_messages: can_pin_messages,
-                can_promote_members: can_promote_members
-              }
-            )
+        # @!attribute [rw] chat_id
+        #   @return [Integer, String]
+        # @!attribute [rw] user_id
+        #   @return [Integer]
+        # @!attribute [rw] can_change_info
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_post_messages
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_edit_messages
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_delete_messages
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_invite_users
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_restrict_members
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_pin_messages
+        #   @return [Boolean, nil]
+        # @!attribute [rw] can_promote_members
+        #   @return [Boolean, nil]
+        PromoteChatMember = Struct.new(
+          :chat_id,
+          :user_id,
+          :can_change_info,
+          :can_post_messages,
+          :can_edit_messages,
+          :can_delete_messages,
+          :can_invite_users,
+          :can_restrict_members,
+          :can_pin_messages,
+          :can_promote_members
+        ) do
+          include Telegram::CoreExt::Struct
+
+          def initialize(
+            chat_id:,
+            user_id:,
+            can_change_info: nil,
+            can_post_messages: nil,
+            can_edit_messages: nil,
+            can_delete_messages: nil,
+            can_invite_users: nil,
+            can_restrict_members: nil,
+            can_pin_messages: nil,
+            can_promote_members: nil
           )
+            super(
+              chat_id,
+              user_id&.to_i,
+              (!!can_change_info unless can_change_info.nil?),
+              (!!can_post_messages unless can_post_messages.nil?),
+              (!!can_edit_messages unless can_edit_messages.nil?),
+              (!!can_delete_messages unless can_delete_messages.nil?),
+              (!!can_invite_users unless can_invite_users.nil?),
+              (!!can_restrict_members unless can_restrict_members.nil?),
+              (!!can_pin_messages unless can_pin_messages.nil?),
+              (!!can_promote_members unless can_promote_members.nil?)
+            )
+          end
+
+          def call(client:, token:)
+            Types::Response.new(
+              result_caster: ->(r) { (!!r unless r.nil?) },
+              **client.post(
+                url: Telegram::API::Bot.build_url(token: token, method: 'promoteChatMember'),
+                parameters: self.to_h
+              )
+            )
+          end
         end
       end
     end

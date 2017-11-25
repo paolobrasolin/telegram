@@ -1,21 +1,36 @@
 # coding: utf-8
 
-require 'yaml'
+require 'json'
 require 'fileutils'
-
 require 'active_support/core_ext/hash'
 
-
-api_types = YAML.load File.open(File.join(__dir__, 'parsed_types.yaml'))
-api_methods = YAML.load File.open(File.join(__dir__, 'parsed_methods.yaml'))
-
 require 'liquid'
+
+################################################################################
+
+print 'Loading data... '
+
+# Load prerendered data.
+
+api_types = JSON.parse(
+  File.open(File.join(__dir__, 'data', 'types.prerendered.json')).read
+).map(&:deep_symbolize_keys)
+
+api_methods = JSON.parse(
+  File.open(File.join(__dir__, 'data', 'methods.prerendered.json')).read
+).map(&:deep_symbolize_keys)
+
+puts 'Done.'
+
+################################################################################
+
+print 'Rendering types... '
 
 $types_dir = File.join __dir__, '..', *%w[gen telegram api bot types]
 FileUtils.mkdir_p $types_dir
 $type_template = Liquid::Template.parse File.read(File.join __dir__, 'templates', 'type.rb.liquid')
 
-def generate_type(type)
+def render_type(type)
   file_dir = $types_dir
   FileUtils.mkdir_p file_dir
   file_name = type[:snake_name] + '.rb'
@@ -28,9 +43,14 @@ def generate_type(type)
 end
 
 api_types.each do |type|
-  generate_type type
+  render_type type
 end
 
+puts 'Done.'
+
+################################################################################
+
+print 'Rendering types... '
 
 $methods_dir = File.join __dir__, '..', *%w[gen telegram api bot methods]
 FileUtils.mkdir_p $methods_dir
@@ -51,3 +71,5 @@ end
 api_methods.each do |method|
   generate_method method
 end
+
+puts 'Done.'

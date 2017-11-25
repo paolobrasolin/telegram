@@ -62,7 +62,7 @@ module Telegram
               type&.to_s,
               id&.to_s,
               title&.to_s,
-              Types::InputMessageContent.new(**input_message_content.to_h),
+              input_message_content,
               (Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?),
               (url&.to_s unless url.nil?),
               (!!hide_url unless hide_url.nil?),

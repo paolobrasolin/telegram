@@ -39,7 +39,7 @@ module Telegram
               id&.to_s,
               sticker_file_id&.to_s,
               (Types::InlineKeyboardMarkup.new(**reply_markup.to_h) unless reply_markup.nil?),
-              (Types::InputMessageContent.new(**input_message_content.to_h) unless input_message_content.nil?)
+              (input_message_content unless input_message_content.nil?)
             )
           end
         end
