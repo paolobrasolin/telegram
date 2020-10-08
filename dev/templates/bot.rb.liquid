@@ -1,0 +1,29 @@
+# frozen_string_literal: true
+
+require 'telegram/api/bot'
+
+module Telegram
+  class Bot
+    def initialize(token:, client: Telegram::API::Bot::Client)
+      @token = token
+      @client = client
+    end
+{%- for method in methods -%}
+{%- if method.parameters == empty %}
+
+    def {{ method.snake_name }}
+      Telegram::API::Bot::Methods::{{ method.pascal_name }}.
+        new.
+        call(client: @client, token: @token)
+    end
+{%- else %}
+
+    def {{ method.snake_name }}(**parameters)
+      Telegram::API::Bot::Methods::{{ method.pascal_name }}.
+        new(**parameters).
+        call(client: @client, token: @token)
+    end
+{%- endif -%}
+{%- endfor %}
+  end
+end

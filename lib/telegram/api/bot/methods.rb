@@ -8,17 +8,6 @@ module Telegram
   module API
     module Bot
       module Methods
-        module Callable
-          def call(client)
-            Types::Response.new(
-              result_caster: self.class::RESULT_CASTER,
-              **client.post(
-                url: build_url(self.class::METHOD_NAME),
-                parameters: self.to_h
-              )
-            )
-          end
-        end
       private
 
         # TODO: save this to a gist - it is pretty neat.

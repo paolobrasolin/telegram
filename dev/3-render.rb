@@ -73,3 +73,23 @@ api_methods.each do |method|
 end
 
 puts 'Done.'
+
+################################################################################
+
+print 'Rendering bot... '
+
+$methods_dir = File.join __dir__, '..', *%w[gen telegram]
+FileUtils.mkdir_p $methods_dir
+$method_template = Liquid::Template.parse File.read(File.join __dir__, 'templates', 'bot.rb.liquid')
+
+file_dir = $methods_dir
+FileUtils.mkdir_p file_dir
+file_name = 'bot.rb'
+file_path = File.join file_dir, file_name
+
+File.open(file_path, 'w') do |file|
+  output = $method_template.render 'methods' => api_methods.map(&:deep_stringify_keys)
+  file.write output
+end
+
+puts 'Done.'

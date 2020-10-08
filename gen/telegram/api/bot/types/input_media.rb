@@ -8,14 +8,11 @@ module Telegram
       module Types
         # See the {https://core.telegram.org/bots/api#inputmedia official documentation}.
         #
-        InputMedia = Struct.new(
-        ) do
+        InputMedia = Struct.new(nil) do
           include Telegram::CoreExt::Struct
 
-          def initialize(
-          )
-            super(
-            )
+          def initialize
+            super
           end
         end
       end

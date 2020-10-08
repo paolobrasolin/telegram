@@ -41,6 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'liquid', '~> 4'
   spec.add_development_dependency 'activesupport'
   spec.add_development_dependency 'colorize'
+  spec.add_development_dependency 'minitest-reporters'
 
   # spec.add_development_dependency 'guard', '~> 2.14'
   # spec.add_development_dependency 'guard-rspec', '~> 4.7'
